@@ -233,7 +233,19 @@ function startGame() {
   var inputs = document.getElementsByTagName("input"); 
     for (var i = 0; i < inputs.length; i++) { 
       inputs[i].disabled = true;
-  } 
+  }
+  document.getElementById("attack1").disabled = false;
+  document.getElementById("attack1").style.opacity = "1.0";
+  document.getElementById("attack1").style.cursor = "pointer";
+  document.getElementById("heal1").disabled = false;
+  document.getElementById("heal1").style.opacity = "1.0";
+  document.getElementById("heal1").style.cursor = "pointer";
+  document.getElementById("attack2").disabled = true;
+  document.getElementById("attack2").style.opacity = "0.2";
+  document.getElementById("attack2").style.cursor = "not-allowed";
+  document.getElementById("heal2").disabled = true;
+  document.getElementById("heal2").style.opacity = "0.2";
+  document.getElementById("heal2").style.cursor = "not-allowed";
 }
 
 // attack functions
@@ -243,6 +255,18 @@ function attack1(player, enemy) {
   var player_attack = attack_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
   element.innerHTML = ("<p>" + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
+  document.getElementById("attack2").disabled = false;
+  document.getElementById("attack2").style.opacity = "1.0";
+  document.getElementById("attack2").style.cursor = "pointer";
+  document.getElementById("heal2").disabled = false;
+  document.getElementById("heal2").style.opacity = "1.0";
+  document.getElementById("heal2").style.cursor = "pointer";
+  document.getElementById("attack1").disabled = true;
+  document.getElementById("attack1").style.opacity = "0.2";
+  document.getElementById("attack1").style.cursor = "not-allowed";
+  document.getElementById("heal1").disabled = true;
+  document.getElementById("heal1").style.opacity = "0.2";
+  document.getElementById("heal1").style.cursor = "not-allowed";
   if (enemy.health <= 0) {
     element.innerHTML += loser;
     document.getElementById("attack1").disabled = true;
@@ -259,6 +283,8 @@ function attack1(player, enemy) {
     document.getElementById("heal2").style.cursor = "not-allowed";
     document.getElementById("error").innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
+  } else {
+    setTimeout(player2Move, 3000);
   }
 }
 function attack2(player, enemy) {
@@ -267,7 +293,19 @@ function attack2(player, enemy) {
   var enemy_attack = attack_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
   element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class +  " has " + player.health + " health. </p>");
-    if (player.health <= 0) {
+  document.getElementById("attack1").disabled = false;
+  document.getElementById("attack1").style.opacity = "1.0";
+  document.getElementById("attack1").style.cursor = "pointer";
+  document.getElementById("heal1").disabled = false;
+  document.getElementById("heal1").style.opacity = "1.0";
+  document.getElementById("heal1").style.cursor = "pointer";
+  document.getElementById("attack2").disabled = true;
+  document.getElementById("attack2").style.opacity = "0.2";
+  document.getElementById("attack2").style.cursor = "not-allowed";
+  document.getElementById("heal2").disabled = true;
+  document.getElementById("heal2").style.opacity = "0.2";
+  document.getElementById("heal2").style.cursor = "not-allowed";
+  if (player.health <= 0) {
     element.innerHTML += loser;
     document.getElementById("attack1").disabled = true;
     document.getElementById("attack2").disabled = true;
@@ -290,12 +328,54 @@ function attack2(player, enemy) {
 function heal1(player) {
   healAnimation1(); 
   var player_heal = heal_roll(player.regen);
-  element.innerHTML = ("<p>" + player.class + " regained " + player_heal + " health and now has " + (player.health + player_heal) + " health. </p>");
+  player.health = player.health + player_heal;
+  element.innerHTML = ("<p>" + player.class + " regained " + player_heal + " health and now has " + player.health + " health. </p>");
+  setTimeout(autoAttack, 3000);
+  document.getElementById("attack2").disabled = false;
+  document.getElementById("attack2").style.opacity = "1.0";
+  document.getElementById("attack2").style.cursor = "pointer";
+  document.getElementById("heal2").disabled = false;
+  document.getElementById("heal2").style.opacity = "1.0";
+  document.getElementById("heal2").style.cursor = "pointer";
+  document.getElementById("attack1").disabled = true;
+  document.getElementById("attack1").style.opacity = "0.2";
+  document.getElementById("attack1").style.cursor = "not-allowed";
+  document.getElementById("heal1").disabled = true;
+  document.getElementById("heal1").style.opacity = "0.2";
+  document.getElementById("heal1").style.cursor = "not-allowed";
 }
 function heal2(enemy) {
   healAnimation2(); 
   var enemy_heal = heal_roll(enemy.regen);
-  element.innerHTML = ("<p>" + enemy.class + " regained " + enemy_heal + " health and now has " + (enemy.health + enemy_heal) + " health. </p>");
+  enemy.health = enemy.health + enemy_heal;
+  element.innerHTML = ("<p>" + enemy.class + " regained " + enemy_heal + " health and now has " + enemy.health + " health. </p>");
+  document.getElementById("attack1").disabled = false;
+  document.getElementById("attack1").style.opacity = "1.0";
+  document.getElementById("attack1").style.cursor = "pointer";
+  document.getElementById("heal1").disabled = false;
+  document.getElementById("heal1").style.opacity = "1.0";
+  document.getElementById("heal1").style.cursor = "pointer";
+  document.getElementById("attack2").disabled = true;
+  document.getElementById("attack2").style.opacity = "0.2";
+  document.getElementById("attack2").style.cursor = "not-allowed";
+  document.getElementById("heal2").disabled = true;
+  document.getElementById("heal2").style.opacity = "0.2";
+  document.getElementById("heal2").style.cursor = "not-allowed";
+}
+
+// auto attacks
+function autoAttack() {
+  attack2(dude1, dude2);
+}
+function autoHeal() {
+  heal2(dude2);
+}
+var autoTurn = [autoAttack, autoHeal];
+function randomNumber(x) {
+	return Math.floor( Math.random() * x );
+}
+function player2Move() {
+autoTurn[ randomNumber(autoTurn.length) ]();
 }
 
 // random attack and heal generation
