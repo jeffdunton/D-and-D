@@ -1,0 +1,537 @@
+ 
+@media only screen and (max-width: 599px) {
+
+.five-percent-col,
+.ten-percent-col,
+.fifteen-percent-col,
+.twenty-percent-col,
+.twenty-five-percent-col,
+.thirty-percent-col,
+.thirty-five-percent-col,
+.fourty-percent-col,
+.fourty-five-percent-col,
+.fifty-percent-col,
+.fifty-five-percent-col,
+.sixty-percent-col,
+.sixty-five-percent-col,
+.seventy-percent-col,
+.seventy-five-percent-col,
+.eighty-percent-col,
+.eighty-five-percent-col,
+.ninety-percent-col,
+.ninety-five-percent-col,
+.container,
+.small-width,
+.med-width,
+.large-width,
+.xlarge-width,
+.main-content,
+.sidebar {
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0px !important;
+}
+.main-content {
+  padding: 25px !important;
+}
+
+img {
+  max-width: 100% !important;
+}
+
+.header {
+  position: static !important;
+}
+
+.footer {
+  position: static !important;
+}
+
+.mobile-center {
+  text-align: center !important;
+}
+
+.mobile-hidden {
+  display: none !important;
+}
+
+.mobile-display {
+  display: inline-block !important;
+}
+
+#tipCalculate {
+  max-width: 100% !important;
+}
+
+}
+/* fonts */
+
+* {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  line-height: 1.4;
+}
+.text-alt {
+  color: #cccccc;
+}
+h1 {
+  font-size: 48px;
+}
+.heading {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 24px;
+  color: #ffffff;
+  padding-bottom: 5px;
+}
+.subheading {
+  font-size: 12px;
+}
+a:link {
+  color: #EA7E50;
+}
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+
+/* structures */
+.container {
+  display: flex;
+  width: 100%;
+  transition: all 1s linear;
+}
+img {
+    transition: all 1s linear;
+}
+.inner-container {
+  display: block;
+}
+.flex-center {
+  justify-content: center;
+}
+.flex-between {
+  justify-content: space-between;
+}
+.flex-around {
+  justify-content: space-around;
+}
+.items-center {
+  align-items: center;
+}
+.five-percent-col {
+  flex-basis: 5%;
+}
+.ten-percent-col {
+  flex-basis: 10%;
+}
+.fifteen-percent-col {
+  flex-basis: 15%;
+}
+.twenty-percent-col {
+  flex-basis: 20%;
+}
+.twenty-five-percent-col {
+  flex-basis: 15%;
+}
+.thirty-percent-col {
+  flex-basis: 30%;
+}
+.thirty-five-percent-col {
+  flex-basis: 35%;
+}
+.fourty-percent-col {
+  flex-basis: 40%;
+}
+.fourty-five-percent-col {
+  flex-basis: 45%;
+}
+.fifty-percent-col {
+  flex-basis: 50%;
+}
+.fifty-five-percent-col {
+  flex-basis: 55%;
+}
+.sixty-percent-col {
+  flex-basis: 60%;
+}
+.sixty-five-percent-col {
+  flex-basis: 65%;
+}
+.seventy-percent-col {
+  flex-basis: 70%;
+}
+.seventy-five-percent-col {
+  flex-basis: 75%;
+}
+.eighty-percent-col {
+  flex-basis: 80%;
+}
+.eighty-five-percent-col {
+  flex-basis: 85%;
+}
+.ninety-percent-col {
+  flex-basis: 90%;
+}
+.ninety-five-percent-col {
+  flex-basis: 95%;
+}
+/* outer */
+.outer {
+  background-image: url('https://d.newsweek.com/en/full/473198/game-thrones-battle-bastards-mashups.jpg');
+  background-color: #000000;
+  background-repeat: no-repeat;
+  width: 100%;
+  border: 0px;
+  margin: 0;
+  padding: 0px;
+}
+.outer-margin {
+margin-top: 20px;
+}
+.header {
+  position: fixed;
+  top: 0;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+}
+
+/* inner */
+.small-width {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.med-width {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.large-width {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.xlarge-width {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inner-body1 {
+  background-color: rgba(0,0,0, 0.7);
+  border-radius: 6px;
+}
+.inner-body2 {
+  background-color: #000000;
+}
+.inner-body3 {
+  background-color: #000000;
+}
+
+/* utlities */
+.v-top {
+  vertical-align: top;
+}
+.v-middle {
+  vertical-align: middle;
+}
+.v-bottom {
+  vertical-align: bottom;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+.hor-padding {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.ver-padding {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.main-content {
+  padding: 25px;
+  max-width: 780px;
+  width: 100%
+}
+
+.four-corners {
+  border-radius: 10px;
+}
+.top-corners {
+  border-radius: 10px 10px 0px 0px;
+}
+.bottom-corners {
+  border-radius: 0px 0px 10px 10px;
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+}
+
+.mobile-display {
+display: none;
+}
+
+/* FORM CLASSES */
+.material-icons { 
+  height: 42px;
+  background-color: #ffffff;
+  border-color: #DDDDDD;
+  vertical-align: middle;
+  }
+
+.form {
+  padding: 30px 5px 30px 5px;
+}
+
+.search-button:hover { 
+  background-color: #06427E;
+}
+
+input[type=text]:focus {
+    background-color: #EEEEEE;
+}
+
+.input {
+  border-color: #DDDDDD;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 22px;
+  width: 100%; 
+  max-width: 300px;
+  height: 38px;
+  vertical-align: middle;
+}
+
+.links {
+  border-color: #DDDDDD;
+  color: #232C3F;
+  margin-left: 210px;
+  font-size: 20px; 
+  width: 10em;
+}
+
+a {
+  color: #EA7E50;
+}
+
+.startGame {
+  background-color: #415F7A;
+  opacity: 0.4;
+  width: 300px;
+  font-size: 18px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 0;
+  margin-top: 0px;
+  cursor: not-allowed;
+}
+
+.beginGame {
+  background-color: #415F7A;
+  opacity: 1.0;
+  width: 300px;
+  font-size: 18px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 0;
+  margin-top: 0px;
+  cursor: pointer;
+}
+
+.beginGame:hover {
+  background-color: green ;
+}
+
+.resetGame {
+  background-color: #415F7A;
+  width: 300px;
+  font-size: 18px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 0;
+  margin-top: 0px;
+  cursor: pointer;
+}
+
+.resetGame:hover {
+  background-color: #A50308 ;
+}
+
+.select-button {
+  background-color: #415F7A;
+  width: 100px;
+  font-size: 18px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 0;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.select-button:hover {
+  background-color: green;
+}
+
+body {
+    animation: fadeIn 1.5s linear;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 153px;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 25px;
+  background: #000000;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 10px;
+  height: 25px;
+  background: #000000;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.center-text {
+  text-align: center;
+}
+
+     .select .radio {
+         position: relative;
+         margin-bottom: 10px;
+      }
+      
+      .select .radio .radio-title {
+         display: inline-block;
+         vertical-align: middle;
+         margin-top: 2px;
+         margin-bottom: 2px;
+         padding: 0px 20px 0px 0px;
+      }
+      
+      .select .radio .radio-content {
+         display: inline-block;
+         vertical-align: middle;
+      }
+      
+      .select .radio input {
+         position: absolute;
+         opacity: 0;
+         cursor: pointer;
+      }
+      
+      .select .radio label {
+         display: inline-block;
+         vertical-align: middle;
+         cursor: pointer;
+         width: 130px;
+         height: 130px;
+         border: 1px solid transparent;
+         margin: 2px;
+         overflow: hidden;
+         background-color: rgba(255,255,255, 0.5);
+      }
+      
+      .select .radio label.size {
+         display: inline-block;
+         vertical-align: middle;
+         padding: 3px 3px 3px 3px;
+         cursor: pointer;
+         width: auto;
+         height: 21px;
+         border: 1px solid #CCCCCC;
+         margin: 2px;
+         overflow: hidden;
+      }
+      
+      .select .radio .radio-content label:hover {
+        background-color: rgba(255,255,255, 1.0);
+      }
+      
+      .select .radio input[type="radio"]:checked + label {
+         border: 1px solid #000000;
+         outline: 3px solid green;
+        background-color: rgba(255,255,255, 1.0);
+      }
+      
+      .select .radio input[type="radio"]:focus + label {
+         border: 1px solid #000000;
+         outline: 3px solid green;
+                 background-color: rgba(255,255,255, 1.0);
+      }
+
+      .sidebar {
+        width: 340px;
+        height: 890px;
+        overflow: scroll;
+        padding: 10px;
+        margin: 0px 10px;
+        text-align: center;
+        position : relative; bottom:0;
+      }
+
+      #error {
+        height: 30px;
+        color: red;
+        overflow: scroll;
+      }
+
+buttons {
+      transition: all 1s linear;
+      }
+
+      .image-overlay {
+         -webkit-filter: hue-rotate(90deg) brightness(10%) grayscale(10%);
+          filter: hue-rotate(90deg) brightness(10%) grayscale(10%);
+      }
+
+    

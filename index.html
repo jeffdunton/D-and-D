@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JeffD JavaScript Test #</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Frank+Ruhl+Libre|Roboto&display=swap" rel="stylesheet">
+  <audio id="attackSound"><source src="sounds/attackSound.mp3" type="audio/mp3"></audio>
+  <audio id="healSound"><source src="sounds/healSound.wav" type="audio/wav"></audio>
+  <audio id="selectSound"><source src="sounds/selectSound.wav" type="audio/wav"></audio>
+  <audio id="swipeSound"><source src="sounds/swipeSound.wav" type="audio/wav"></audio>
+  <audio id="fightSound"><source src="sounds/fightSound.wav" type="audio/wav"></audio>
+  <audio id="karateSound"><source src="sounds/karateSound.mp3" type="audio/mp3"></audio>
+  <audio id="gameOverSound"><source src="sounds/gameOver.wav" type="audio/wav"></audio>
+  <audio id="errorSound"><source src="sounds/errorSound.wav" type="audio/wav"></audio>
+  <audio id="wizardSound"><source src="sounds/wizardSound.wav" type="audio/wav"></audio>
+  <audio id="dragonSound"><source src="sounds/dragonSound.wav" type="audio/wav"></audio>
+  <audio id="warriorSound"><source src="sounds/warriorSound.wav" type="audio/wav"></audio>
+  <audio id="knightSound"><source src="sounds/knightSound.ogg" type="audio/ogg"></audio>
+  <audio id="readySound"><source src="sounds/readySound.wav" type="audio/wav"></audio>
+</head>
+<body class="outer">
+
+  <div class="container flex-center outer-margin">
+    <div class="ver-padding inner-body1 main-content">
+      
+      <div id="Player1Choices" class="container flex-between" style="min-height: 180px;">
+        <div class="hor-padding"><span class="heading">Player 1</span><br /><div id="player1choice"></div><div id="health"></div><button id="selectButton1" class="select-button" onclick="displayRadioValue1()">Select</button></div>
+        <div class="hor-padding">
+          <div class="select">
+            <div class="radio radio--color">
+              <div class="radio-content">
+                <input onclick="player1Type(this.value)" type="radio" name="player1" id="player1-1" value="Warrior<br>HP: 1000<br>Base Damage: 10<br>Regen: 5">
+                <label for="player1-1"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/warrior-1649051-1399005.png"></label>
+                <input onclick="player1Type(this.value)" type="radio" name="player1" id="player1-2" value="Knight<br>HP: 1250<br>Base Damage: 8<br>Regen: 2">
+                <label for="player1-2"><img src="https://cdn3.iconfinder.com/data/icons/trojan-war/274/trojan-war-002-512.png"></label>
+                <input onclick="player1Type(this.value)" type="radio" name="player1" id="player1-3" value="Wizard<br>HP: 850<br>Base Damage: 6<br>Regen: 50">
+                <label for="player1-3"><img src="https://static.thenounproject.com/png/657180-200.png"></label>
+                <input onclick="player1Type(this.value)" type="radio" name="player1" id="player1-4" value="Dragon<br>HP: 1400<br>Base Damage: 3<br>Regen: 10">
+                <label for="player1-4"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dragon-18-548351.png"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="Player2Choices" class="container flex-between ver-padding" style="min-height: 180px;">
+        <div class="hor-padding"><span class="heading">Player 2</span><br /><div id="player2choice"></div><button id="selectButton2" class="select-button" onclick="displayRadioValue2()">Select</button></div>
+        <div class="hor-padding">
+          <div class="select">
+            <div class="radio radio--color">
+              <div class="radio-content">
+                <input onclick="player2Type(this.value)" type="radio" name="player2" id="player2-1" value="Warrior<br>HP: 1000<br>Base Damage: 10<br>Regen: 5">
+                <label for="player2-1"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/warrior-1649051-1399005.png"></label>
+                <input onclick="player2Type(this.value)" type="radio" name="player2" id="player2-2" value="Knight<br>HP: 1250<br>Base Damage: 8<br>Regen: 2">
+                <label for="player2-2"><img src="https://cdn3.iconfinder.com/data/icons/trojan-war/274/trojan-war-002-512.png"></label>
+                <input onclick="player2Type(this.value)" type="radio" name="player2" id="player2-3" value="Wizard<br>HP: 850<br>Base Damage: 6<br>Regen: 50">
+                <label for="player2-3"><img src="https://static.thenounproject.com/png/657180-200.png"></label>
+                <input onclick="player2Type(this.value)" type="radio" name="player2" id="player2-4" value="Dragon<br>HP: 1400<br>Base Damage: 3<br>Regen: 10">
+                <label for="player2-4"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dragon-18-548351.png"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container flex-center items-center" style="min-height: 137px;">
+        <div id="result1" class="heading center-text" style="width: 50%;">?</div>
+        <div class="center-text hor-padding">
+          <span class="heading">VS</span>
+        </div>
+        <div id="result2" class="heading center-text" style="width: 50%;">?</div>
+      </div>
+      
+      <div class="container flex-center">
+        <div id="error"></div>
+      </div>
+      
+      <div class="container flex-center items-center" style="min-height: 200px;">
+        
+        <div id="attackUI1" class="center-text" style="width: 0%; min-height: 130px; display: none;">
+          <div>
+            <div class="container flex-center">
+              <img id="character1" src="images/attackIcon.png" width="50" style="opacity: 0.2;">
+              <img id="character1A" src="images/spellIcon.png" width="50" style="opacity: 0.2;">
+            </div>
+            <div class="container flex-center ver-padding">
+              <button id="attack1" class="beginGame" onclick="attack1(dude1,dude2)">Attack</button>
+            </div>
+            <div class="container flex-center ver-padding">
+              <button id="heal1" class="beginGame" onclick="heal1(dude1)">Heal</button>
+            </div>
+          </div>
+        </div>
+        
+        <div id="buttons" class="center-text hor-padding" style="vertical-align: bottom; width: 100%;">
+          <div class="container flex-center ver-padding">
+            <button id="enable" class="beginGame" onclick="enable()">Ready to Begin?</button>
+          </div>
+          <div class="container flex-center ver-padding">
+            <button id="calculate" class="startGame" onclick="countdown()">Start Game</button>
+          </div>
+        </div>
+        
+        <div id="attackUI2" class="center-text" style="width: 0%; min-height: 130px; display: none;">
+          <div>
+            <div class="container flex-center">
+              <img id="character2" src="images/attackIcon.png" width="50" style="opacity: 0.2;">
+              <img id="character2A" src="images/spellIcon.png" width="50" style="opacity: 0.2;">
+            </div>
+            <div class="container flex-center ver-padding">
+              <button id="attack2" class="beginGame" onclick="attack2(dude1,dude2)">Attack</button>
+            </div>
+            <div class="container flex-center ver-padding">
+              <button id="heal2" class="beginGame" onclick="heal2(dude2)">Heal</button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <div class="container flex-center">
+        <button id="reset" class="resetGame" onclick="resetGame()">Reset Game</button>
+      </div>
+      
+    </div>
+  
+    
+  </div>
+  
+</body>
+<script src="script.js"></script>
+</html>
