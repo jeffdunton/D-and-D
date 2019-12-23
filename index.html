@@ -25,7 +25,7 @@
     <div class="ver-padding inner-body1 main-content">
       
       <div id="Player1Choices" class="container flex-between" style="min-height: 180px;">
-        <div class="hor-padding"><span class="heading">Player 1</span><br /><div id="player1choice"></div><div id="health"></div><button id="selectButton1" class="select-button" onclick="displayRadioValue1()">Select</button></div>
+        <div class="hor-padding"><span class="heading">Player</span><br /><div id="player1choice"></div><div id="health"></div><button id="selectButton1" class="select-button" onclick="displayRadioValue1()">Select</button></div>
         <div class="hor-padding">
           <div class="select">
             <div class="radio radio--color">
@@ -45,7 +45,7 @@
       </div>
       
       <div id="Player2Choices" class="container flex-between ver-padding" style="min-height: 180px;">
-        <div class="hor-padding"><span class="heading">Player 2</span><br /><div id="player2choice"></div><button id="selectButton2" class="select-button" onclick="displayRadioValue2()">Select</button></div>
+        <div class="hor-padding"><span class="heading">Computer</span><br /><div id="player2choice"></div><button id="selectButton2" class="select-button" onclick="displayRadioValue2()">Select</button></div>
         <div class="hor-padding">
           <div class="select">
             <div class="radio radio--color">
@@ -81,21 +81,21 @@
         <div id="attackUI1" class="center-text" style="width: 0%; min-height: 130px; display: none;">
           <div>
             <div class="container flex-center">
-              <img id="character1" src="images/attackIcon.png" width="50" style="opacity: 0.2;">
-              <img id="character1A" src="images/spellIcon.png" width="50" style="opacity: 0.2;">
+              <img id="attackIcon1" src="images/attackIcon.png" width="50" style="opacity: 0.2;">
+              <img id="healIcon1" src="images/spellIcon.png" width="50" style="opacity: 0.2;">
             </div>
             <div class="container flex-center ver-padding">
-              <button id="attack1" class="beginGame" onclick="attack1(dude1,dude2)">Attack</button>
+              <button id="attack1" class="beginGame" onclick="attacker1(dude1,dude2)">Attack</button>
             </div>
             <div class="container flex-center ver-padding">
-              <button id="heal1" class="beginGame" onclick="heal1(dude1)">Heal</button>
+              <button id="heal1" class="beginGame" onclick="healer1(dude1)">Heal</button>
             </div>
           </div>
         </div>
         
         <div id="buttons" class="center-text hor-padding" style="vertical-align: bottom; width: 100%;">
           <div class="container flex-center ver-padding">
-            <button id="enable" class="beginGame" onclick="enable()">Ready to Begin?</button>
+            <button id="enable" class="beginGame" onclick="enableStart()">Ready to Begin?</button>
           </div>
           <div class="container flex-center ver-padding">
             <button id="calculate" class="startGame" onclick="countdown()">Start Game</button>
@@ -105,14 +105,14 @@
         <div id="attackUI2" class="center-text" style="width: 0%; min-height: 130px; display: none;">
           <div>
             <div class="container flex-center">
-              <img id="character2" src="images/attackIcon.png" width="50" style="opacity: 0.2;">
-              <img id="character2A" src="images/spellIcon.png" width="50" style="opacity: 0.2;">
+              <img id="attackIcon2" src="images/attackIcon.png" width="50" style="opacity: 0.2;">
+              <img id="healIcon2" src="images/spellIcon.png" width="50" style="opacity: 0.2;">
             </div>
             <div class="container flex-center ver-padding">
-              <button id="attack2" class="beginGame" onclick="attack2(dude1,dude2)">Attack</button>
+              <button id="attack2" class="beginGame" onclick="attacker2(dude1,dude2)">Attack</button>
             </div>
             <div class="container flex-center ver-padding">
-              <button id="heal2" class="beginGame" onclick="heal2(dude2)">Heal</button>
+              <button id="heal2" class="beginGame" onclick="healer2(dude2)">Heal</button>
             </div>
           </div>
         </div>
