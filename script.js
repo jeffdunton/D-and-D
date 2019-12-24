@@ -37,6 +37,7 @@ var knightSound = document.getElementById("knightSound");
 var readySound = document.getElementById("readySound");
 var poisonSound = document.getElementById("poisonSound");
 var critHitSound = document.getElementById("critHitSound");
+var freezeSound = document.getElementById("freezeSound");
 
 var attackIcon1 = document.getElementById("attackIcon1");
 var attackIcon2 = document.getElementById("attackIcon2");
@@ -55,6 +56,8 @@ var critHit1 = document.getElementById("critHit1");
 var critHit2 = document.getElementById("critHit2");
 var poison1 = document.getElementById("poison1");
 var poison2 = document.getElementById("poison2");
+var freeze1 = document.getElementById("freeze1");
+var freeze2 = document.getElementById("freeze2");
 
 var calculate = document.getElementById("calculate");
 var selectButton1 = document.getElementById("selectButton1");
@@ -178,7 +181,7 @@ function attackAnimation(attackIconNumber) {
 attackSound.play();
 attackIconNumber.style.transform = "rotate(360deg)";
 attackIconNumber.style.opacity = "1.0";
-setTimeout(attackAnimationFade, 1000, attackIconNumber) 
+setTimeout(attackAnimationFade, 1000, attackIconNumber); 
 }
 
 function attackAnimationFade(attackIconNumber) {
@@ -190,7 +193,7 @@ function healAnimation(healIconNumber) {
 healSound.play();
 healIconNumber.style.transform = "rotate(360deg)";
 healIconNumber.style.opacity = "1.0";
-setTimeout(healAnimationFade, 1000, healIconNumber) 
+setTimeout(healAnimationFade, 1000, healIconNumber);
 }
 
 function healAnimationFade(healIconNumber) {
@@ -202,7 +205,7 @@ function critHitAnimation(critHitIconNumber) {
 critHitSound.play();
 critHitIconNumber.style.transform = "rotate(360deg)";
 critHitIconNumber.style.opacity = "1.0";
-setTimeout(critHitAnimationFade, 1000, healIconNumber) 
+setTimeout(critHitAnimationFade, 1000, critHitIconNumber);
 }
 
 function critHitAnimationFade(critHitIconNumber) {
@@ -214,12 +217,24 @@ function poisonAnimation(poisonIconNumber) {
 poisonSound.play();
 poisonIconNumber.style.transform = "rotate(360deg)";
 poisonIconNumber.style.opacity = "1.0";
-setTimeout(poisonAnimationFade, 1000, poisonIconNumber) 
+setTimeout(poisonAnimationFade, 1000, poisonIconNumber); 
 }
 
 function poisonAnimationFade(poisonIconNumber) {
 poisonIconNumber.style.transform = "rotate(-360deg)";
 poisonIconNumber.style.opacity = "0.2";
+}
+
+function freezeAnimation(freezeIconNumber) {
+freezeSound.play();
+freezeIconNumber.style.transform = "rotate(360deg)";
+freezeIconNumber.style.opacity = "1.0";
+setTimeout(freezeAnimationFade, 1000, freezeIconNumber);
+}
+
+function freezeAnimationFade(freezeIconNumber) {
+freezeIconNumber.style.transform = "rotate(-360deg)";
+freezeIconNumber.style.opacity = "0.2";
 }
 
 // play start sound and wait 3 seconds to enable start game button
@@ -253,6 +268,15 @@ function startGame() {
   heal1.disabled = false;
   heal1.style.opacity = "1.0";
   heal1.style.cursor = "pointer";
+  critHit1.disabled = false;
+  critHit1.style.opacity = "1.0";
+  critHit1.style.cursor = "pointer";
+  poison1.disabled = false;
+  poison1.style.opacity = "1.0";
+  poison1.style.cursor = "pointer";
+  freeze1.disabled = false;
+  freeze1.style.opacity = "1.0";
+  freeze1.style.cursor = "pointer";
   attack2.disabled = true;
   attack2.style.opacity = "0.2";
   attack2.style.cursor = "not-allowed";
@@ -264,6 +288,9 @@ function startGame() {
   poison2.disabled = true;
   poison2.style.opacity = "0.2";
   poison2.style.cursor = "not-allowed";
+  freeze2.disabled = true;
+  freeze2.style.opacity = "0.2";
+  poisfreeze2on2.style.cursor = "not-allowed";
 }
 
 // attack functions
@@ -279,25 +306,62 @@ function attacker1(player, enemy) {
   heal2.disabled = false;
   heal2.style.opacity = "1.0";
   heal2.disabled = true;
+  critHit2.disabled = false;
+  critHit2.style.opacity = "1.0";
+  critHit2.style.cursor = "pointer";
+  poison2.disabled = false;
+  poison2.style.opacity = "1.0";
+  poison2.style.cursor = "pointer";
+  freeze2.disabled = false;
+  freeze2.style.opacity = "1.0";
+  freeze2.style.cursor = "pointer";
+  attack1.disabled = true;
   attack1.style.opacity = "0.2";
   attack1.style.cursor = "not-allowed";
   heal1.disabled = true;
   heal1.style.opacity = "0.2";
   heal1.style.cursor = "not-allowed";
+  critHit1.disabled = true;
+  critHit1.style.opacity = "0.2";
+  critHit1.style.cursor = "not-allowed";
+  poison1.disabled = true;
+  poison1.style.opacity = "0.2";
+  poison1.style.cursor = "not-allowed";
+  freeze1.disabled = true;
+  freeze1.style.opacity = "0.2";
+  freeze1.style.cursor = "not-allowed";
   if (enemy.health <= 0) {
     element.innerHTML += loser;
     attack1.disabled = true;
     attack2.disabled = true;
     heal1.disabled = true;
     heal2.disabled = true;
+    critHit1.disabled = true;
+    critHit2.disabled = true;
+    poison1.disabled = true;
+    poison2.disabled = true;
+    freeze1.disabled = true;
+    freeze1.disabled = true;
     attack1.style.opacity = "0.2";
     attack2.style.opacity = "0.2";
     heal1.style.opacity = "0.2";
     heal2.style.opacity = "0.2";
+    critHit1.style.opacity = "0.2";
+    critHit2.style.opacity = "0.2";
+    poison1.style.opacity = "0.2";
+    poison2.style.opacity = "0.2";
+    freeze1.style.opacity = "0.2";
+    freeze2.style.opacity = "0.2";
     attack1.style.cursor = "not-allowed";
     attack2.style.cursor = "not-allowed";
     heal1.style.cursor = "not-allowed";
     heal2.style.cursor = "not-allowed";
+    critHit1.style.cursor = "not-allowed";
+    critHit1.style.cursor = "not-allowed";
+    poison1.style.cursor = "not-allowed";
+    poison2.style.cursor = "not-allowed";
+    freeze1.style.cursor = "not-allowed";
+    freeze2.style.cursor = "not-allowed";
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
   } else {
@@ -316,26 +380,62 @@ function attacker2(player, enemy) {
   heal1.disabled = false;
   heal1.style.opacity = "1.0";
   heal1.style.cursor = "pointer";
+  critHit1.disabled = false;
+  critHit1.style.opacity = "1.0";
+  critHit1.style.cursor = "pointer";
+  poison1.disabled = false;
+  poison1.style.opacity = "1.0";
+  poison1.style.cursor = "pointer";
+  freeze1.disabled = false;
+  freeze1.style.opacity = "1.0";
+  freeze1.style.cursor = "pointer";
   attack2.disabled = true;
   attack2.style.opacity = "0.2";
   attack2.style.cursor = "not-allowed";
   heal2.disabled = true;
   heal2.style.opacity = "0.2";
   heal2.style.cursor = "not-allowed";
+  critHit2.disabled = true;
+  critHit2.style.opacity = "0.2";
+  critHit2.style.cursor = "not-allowed";
+  poison2.disabled = true;
+  poison2.style.opacity = "0.2";
+  poison2.style.cursor = "not-allowed";
+  freeze2.disabled = true;
+  freeze2.style.opacity = "0.2";
+  freeze2.style.cursor = "not-allowed";
   if (player.health <= 0) {
     element.innerHTML += loser;
     attack1.disabled = true;
     attack2.disabled = true;
     heal1.disabled = true;
     heal2.disabled = true;
+    critHit1.disabled = true;
+    critHit2.disabled = true;
+    poison1.disabled = true;
+    poison2.disabled = true;
+    freeze1.disabled = true;
+    freeze1.disabled = true;
     attack1.style.opacity = "0.2";
     attack2.style.opacity = "0.2";
     heal1.style.opacity = "0.2";
     heal2.style.opacity = "0.2";
+    critHit1.style.opacity = "0.2";
+    critHit2.style.opacity = "0.2";
+    poison1.style.opacity = "0.2";
+    poison2.style.opacity = "0.2";
+    freeze1.style.opacity = "0.2";
+    freeze2.style.opacity = "0.2";
     attack1.style.cursor = "not-allowed";
     attack2.style.cursor = "not-allowed";
     heal1.style.cursor = "not-allowed";
     heal2.style.cursor = "not-allowed";
+    critHit1.style.cursor = "not-allowed";
+    critHit1.style.cursor = "not-allowed";
+    poison1.style.cursor = "not-allowed";
+    poison2.style.cursor = "not-allowed";
+    freeze1.style.cursor = "not-allowed";
+    freeze2.style.cursor = "not-allowed";
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
   }
@@ -353,13 +453,31 @@ function healer1(player) {
   attack2.style.cursor = "pointer";
   heal2.disabled = false;
   heal2.style.opacity = "1.0";
-  heal2.style.cursor = "pointer";
+  heal2.disabled = true;
+  critHit2.disabled = false;
+  critHit2.style.opacity = "1.0";
+  critHit2.style.cursor = "pointer";
+  poison2.disabled = false;
+  poison2.style.opacity = "1.0";
+  poison2.style.cursor = "pointer";
+  freeze2.disabled = false;
+  freeze2.style.opacity = "1.0";
+  freeze2.style.cursor = "pointer";
   attack1.disabled = true;
   attack1.style.opacity = "0.2";
   attack1.style.cursor = "not-allowed";
   heal1.disabled = true;
   heal1.style.opacity = "0.2";
   heal1.style.cursor = "not-allowed";
+  critHit1.disabled = true;
+  critHit1.style.opacity = "0.2";
+  critHit1.style.cursor = "not-allowed";
+  poison1.disabled = true;
+  poison1.style.opacity = "0.2";
+  poison1.style.cursor = "not-allowed";
+  freeze1.disabled = true;
+  freeze1.style.opacity = "0.2";
+  freeze1.style.cursor = "not-allowed";
 }
 function healer2(enemy) {
   healAnimation(healIcon2); 
@@ -372,12 +490,54 @@ function healer2(enemy) {
   heal1.disabled = false;
   heal1.style.opacity = "1.0";
   heal1.style.cursor = "pointer";
+  critHit1.disabled = false;
+  critHit1.style.opacity = "1.0";
+  critHit1.style.cursor = "pointer";
+  poison1.disabled = false;
+  poison1.style.opacity = "1.0";
+  poison1.style.cursor = "pointer";
+  freeze1.disabled = false;
+  freeze1.style.opacity = "1.0";
+  freeze1.style.cursor = "pointer";
   attack2.disabled = true;
   attack2.style.opacity = "0.2";
   attack2.style.cursor = "not-allowed";
   heal2.disabled = true;
   heal2.style.opacity = "0.2";
   heal2.style.cursor = "not-allowed";
+  critHit2.disabled = true;
+  critHit2.style.opacity = "0.2";
+  critHit2.style.cursor = "not-allowed";
+  poison2.disabled = true;
+  poison2.style.opacity = "0.2";
+  poison2.style.cursor = "not-allowed";
+  freeze2.disabled = true;
+  freeze2.style.opacity = "0.2";
+  freeze2.style.cursor = "not-allowed";
+}
+
+function critHitter1(player) {
+  critHitAnimation(critHitIcon1); 
+}
+
+function poisoner1(player) {
+  poisonAnimation(poisonIcon1); 
+}
+
+function freezer1(player) {
+  freezeAnimation(freezeIcon1); 
+}
+
+function critHitter2(player) {
+  critHitAnimation(critHitIcon2); 
+}
+
+function poisoner2(player) {
+  poisonAnimation(poisonIcon2); 
+}
+
+function freezer2(player) {
+  freezeAnimation(freezeIcon2); 
 }
 
 // auto attacks
@@ -441,18 +601,6 @@ selectButton1.disabled = false;
 selectButton2.disabled = false;
 selectButton1.style.display = "none";
 selectButton2.style.display = "none";
-attack1.disabled = false;
-attack2.disabled = false;
-heal1.disabled = false;
-heal2.disabled = false;
-attack1.style.opacity = "1.0";
-attack2.style.opacity = "1.0";
-heal1.style.opacity = "1.0";
-heal2.style.opacity = "1.0";
-attack1.style.cursor = "pointer";
-attack2.style.cursor = "pointer";
-heal1.style.cursor = "pointer";
-heal2.style.cursor = "pointer";
 error.innerHTML = "";
 var inputs = document.getElementsByTagName("input"); 
   for (var i = 0; i < inputs.length; i++) { 

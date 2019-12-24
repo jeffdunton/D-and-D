@@ -20,6 +20,7 @@
   <audio id="readySound"><source src="sounds/readySound.wav" type="audio/wav"></audio>
   <audio id="poisonSound"><source src="sounds/poisonSound.flac" type="audio/flac"></audio>
   <audio id="critHitSound"><source src="sounds/critHitSound.wav" type="audio/wav"></audio>
+  <audio id="freezeSound"><source src="sounds/freezeSound.wav" type="audio/wav"></audio>
 </head>
 <body class="outer">
 
@@ -87,6 +88,7 @@
               <img id="healIcon1" src="images/spellIcon.png" width="50" style="opacity: 0.2;">
               <img id="critHitIcon1" src="images/critHitIcon.png" width="50" style="opacity: 0.2;">
               <img id="poisonIcon1" src="images/poisonIcon.png" width="50" style="opacity: 0.2;">
+              <img id="freezeIcon1" src="images/freezeIcon.png" width="50" style="opacity: 0.2;">
             </div>
             <div class="container flex-center ver-padding">
               <button id="attack1" class="beginGame" onclick="attacker1(dude1,dude2)">Attack</button>
@@ -99,6 +101,9 @@
             </div>
             <div class="container flex-center ver-padding">
               <button id="poison1" class="beginGame" onclick="poisoner1(dude1)">Poison</button>
+            </div>
+            <div class="container flex-center ver-padding">
+              <button id="freeze1" class="beginGame" onclick="freezer1(dude1)">Freeze</button>
             </div>
           </div>
         </div>
@@ -119,6 +124,7 @@
               <img id="healIcon2" src="images/spellIcon.png" width="50" style="opacity: 0.2;">
               <img id="critHitIcon2" src="images/critHitIcon.png" width="50" style="opacity: 0.2;">
               <img id="poisonIcon2" src="images/poisonIcon.png" width="50" style="opacity: 0.2;">
+              <img id="freezeIcon2" src="images/freezeIcon.png" width="50" style="opacity: 0.2;">
             </div>
             <div class="container flex-center ver-padding">
               <button id="attack2" class="beginGame" onclick="attacker2(dude1,dude2)">Attack</button>
@@ -132,12 +138,15 @@
             <div class="container flex-center ver-padding">
               <button id="poison2" class="beginGame" onclick="poisoner2(dude2)">Poison</button>
             </div>
+            <div class="container flex-center ver-padding">
+              <button id="freeze2" class="beginGame" onclick="freezer2(dude1)">Freeze</button>
+            </div>
           </div>
         </div>
         
       </div>
       
-      <div class="container flex-center">
+      <div class="container flex-center ver-padding">
         <button id="reset" class="resetGame" onclick="resetGame()">Reset Game</button>
       </div>
       
