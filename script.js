@@ -164,52 +164,28 @@ function enableStart() {
   }
 }
 
-function attackAnimation1() {
+function attackAnimation(attackIconNumber) {
 attackSound.play();
-attackIcon1.style.transform = "rotate(360deg)";
-attackIcon1.style.opacity = "1.0";
-setTimeout(attackAnimationFade1, 1000) 
+attackIconNumber.style.transform = "rotate(360deg)";
+attackIconNumber.style.opacity = "1.0";
+setTimeout(attackAnimationFade, 1000, attackIconNumber) 
 }
 
-function attackAnimationFade1() {
-attackIcon1.style.transform = "rotate(-360deg)";
-attackIcon1.style.opacity = "0.2";
+function attackAnimationFade(attackIconNumber) {
+attackIconNumber.style.transform = "rotate(-360deg)";
+attackIconNumber.style.opacity = "0.2";
 }
 
-function attackAnimation2() {
-attackSound.play();
-attackIcon2.style.transform = "rotate(360deg)";
-attackIcon2.style.opacity = "1.0";
-setTimeout(attackAnimationFade2, 1000) 
-}
-
-function attackAnimationFade2() {
-attackIcon2.style.transform = "rotate(-360deg)";
-attackIcon2.style.opacity = "0.2";
-}
-
-function healAnimation1() {
+function healAnimation(healIconNumber) {
 healSound.play();
-healIcon1.style.transform = "rotate(360deg)";
-healIcon1.style.opacity = "1.0";
-setTimeout(healAnimationFade1, 1000) 
+healIconNumber.style.transform = "rotate(360deg)";
+healIconNumber.style.opacity = "1.0";
+setTimeout(healAnimationFade, 1000, healIconNumber) 
 }
 
-function healAnimationFade1() {
-healIcon1.style.transform = "rotate(-360deg)";
-healIcon1.style.opacity = "0.2";
-}
-
-function healAnimation2() {
-healSound.play();
-healIcon2.style.transform = "rotate(360deg)";
-healIcon2.style.opacity = "1.0";
-setTimeout(healAnimationFade2, 1000) 
-}
-
-function healAnimationFade2() {
-healIcon2.style.transform = "rotate(-360deg)";
-healIcon2.style.opacity = "0.2";
+function healAnimationFade(healIconNumber) {
+healIconNumber.style.transform = "rotate(-360deg)";
+healIconNumber.style.opacity = "0.2";
 }
 
 // play start sound and wait 3 seconds to enable start game button
@@ -253,7 +229,7 @@ function startGame() {
 
 // attack functions
 function attacker1(player, enemy) {
-  attackAnimation1();
+  attackAnimation(attackIcon1);
   var loser = enemy.class + " has been defeated. " + "The winner is " + player.class;
   var player_attack = attack_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
@@ -290,7 +266,7 @@ function attacker1(player, enemy) {
   }
 }
 function attacker2(player, enemy) {
-  attackAnimation2();
+  attackAnimation(attackIcon2);
   var loser = player.class + " has been defeated. " + "The winner is " + enemy.class;
   var enemy_attack = attack_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
@@ -328,7 +304,7 @@ function attacker2(player, enemy) {
 
 // heal functions
 function healer1(player) {
-  healAnimation1(); 
+  healAnimation(healIcon1); 
   var player_heal = heal_roll(player.regen);
   player.health = player.health + player_heal;
   element.innerHTML = ("<p>" + player.class + " regained " + player_heal + " health and now has " + player.health + " health. </p>");
@@ -347,7 +323,7 @@ function healer1(player) {
   heal1.style.cursor = "not-allowed";
 }
 function healer2(enemy) {
-  healAnimation2(); 
+  healAnimation(healIcon2); 
   var enemy_heal = heal_roll(enemy.regen);
   enemy.health = enemy.health + enemy_heal;
   element.innerHTML = ("<p>" + enemy.class + " regained " + enemy_heal + " health and now has " + enemy.health + " health. </p>");
