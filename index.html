@@ -18,6 +18,8 @@
   <audio id="warriorSound"><source src="sounds/warriorSound.wav" type="audio/wav"></audio>
   <audio id="knightSound"><source src="sounds/knightSound.ogg" type="audio/ogg"></audio>
   <audio id="readySound"><source src="sounds/readySound.wav" type="audio/wav"></audio>
+  <audio id="poisonSound"><source src="sounds/poisonSound.flac" type="audio/flac"></audio>
+  <audio id="critHitSound"><source src="sounds/critHitSound.wav" type="audio/wav"></audio>
 </head>
 <body class="outer">
 
@@ -92,6 +94,12 @@
             <div class="container flex-center ver-padding">
               <button id="heal1" class="beginGame" onclick="healer1(dude1)">Heal</button>
             </div>
+            <div class="container flex-center ver-padding">
+              <button id="critHit1" class="beginGame" onclick="critHitter1(dude1)">Critical Hit</button>
+            </div>
+            <div class="container flex-center ver-padding">
+              <button id="poison1" class="beginGame" onclick="poisoner1(dude1)">Poison</button>
+            </div>
           </div>
         </div>
         
@@ -117,6 +125,12 @@
             </div>
             <div class="container flex-center ver-padding">
               <button id="heal2" class="beginGame" onclick="healer2(dude2)">Heal</button>
+            </div>
+            <div class="container flex-center ver-padding">
+              <button id="critHit2" class="beginGame" onclick="critHitter2(dude2)">Critical Hit</button>
+            </div>
+            <div class="container flex-center ver-padding">
+              <button id="poison2" class="beginGame" onclick="poisoner2(dude2)">Poison</button>
             </div>
           </div>
         </div>

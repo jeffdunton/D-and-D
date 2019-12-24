@@ -35,16 +35,26 @@ var dragonSound = document.getElementById("dragonSound");
 var warriorSound = document.getElementById("warriorSound");
 var knightSound = document.getElementById("knightSound");
 var readySound = document.getElementById("readySound");
+var poisonSound = document.getElementById("poisonSound");
+var critHitSound = document.getElementById("critHitSound");
 
 var attackIcon1 = document.getElementById("attackIcon1");
 var attackIcon2 = document.getElementById("attackIcon2");
 var healIcon1 = document.getElementById("healIcon1");
 var healIcon2 = document.getElementById("healIcon2");
+var critHitIcon1 = document.getElementById("critHitIcon1");
+var critHitIcon2 = document.getElementById("critHitIcon2");
+var poisonIcon1 = document.getElementById("poisonIcon1");
+var poisonIcon2 = document.getElementById("poisonIcon2");
 
 var attack1 = document.getElementById("attack1");
 var attack2 = document.getElementById("attack2");
 var heal1 = document.getElementById("heal1");
 var heal2 = document.getElementById("heal2");
+var critHit1 = document.getElementById("critHit1");
+var critHit2 = document.getElementById("critHit2");
+var poison1 = document.getElementById("poison1");
+var poison2 = document.getElementById("poison2");
 
 var calculate = document.getElementById("calculate");
 var selectButton1 = document.getElementById("selectButton1");
@@ -188,6 +198,30 @@ healIconNumber.style.transform = "rotate(-360deg)";
 healIconNumber.style.opacity = "0.2";
 }
 
+function critHitAnimation(critHitIconNumber) {
+critHitSound.play();
+critHitIconNumber.style.transform = "rotate(360deg)";
+critHitIconNumber.style.opacity = "1.0";
+setTimeout(critHitAnimationFade, 1000, healIconNumber) 
+}
+
+function critHitAnimationFade(critHitIconNumber) {
+critHitIconNumber.style.transform = "rotate(-360deg)";
+critHitIconNumber.style.opacity = "0.2";
+}
+
+function poisonAnimation(poisonIconNumber) {
+poisonSound.play();
+poisonIconNumber.style.transform = "rotate(360deg)";
+poisonIconNumber.style.opacity = "1.0";
+setTimeout(poisonAnimationFade, 1000, poisonIconNumber) 
+}
+
+function poisonAnimationFade(poisonIconNumber) {
+poisonIconNumber.style.transform = "rotate(-360deg)";
+poisonIconNumber.style.opacity = "0.2";
+}
+
 // play start sound and wait 3 seconds to enable start game button
 function countdown() {
 fightSound.play();
@@ -224,7 +258,12 @@ function startGame() {
   attack2.style.cursor = "not-allowed";
   heal2.disabled = true;
   heal2.style.opacity = "0.2";
-  heal2.style.cursor = "not-allowed";
+  critHit2.disabled = true;
+  critHit2.style.opacity = "0.2";
+  critHit2.style.cursor = "not-allowed";
+  poison2.disabled = true;
+  poison2.style.opacity = "0.2";
+  poison2.style.cursor = "not-allowed";
 }
 
 // attack functions
