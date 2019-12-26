@@ -539,4 +539,13 @@ buttons {
           filter: hue-rotate(90deg) brightness(10%) grayscale(10%);
       }
 
+      #tip1,#tip2,#tip3,#tip4,#tip5 {
+        height: 51px;
+                line-height: 51px;
+        vertical-align: middle;
+      }
+            #tipSpacerCell {
+        height: 54px;
+      }
+
     

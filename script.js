@@ -67,6 +67,7 @@ var element = document.getElementById("error");
 var buttons = document.getElementById("buttons");
 var enable = document.getElementById("enable");
 var error = document.getElementById("error");
+var tips = document.getElementById("tipsContainer");
 
 // disable/hide buttons 
 calculate.disabled = true;
@@ -256,6 +257,7 @@ function startGame() {
   document.getElementById("attackUI2").style.width = "50%";
   document.getElementById("Player1Choices").style.opacity = "0.2";
   document.getElementById("Player2Choices").style.opacity = "0.2";
+  tips.style.display = "block";
   selectButton1.disabled = true;
   selectButton2.disabled = true;
   var inputs = document.getElementsByTagName("input"); 
@@ -725,6 +727,7 @@ document.getElementById("player1choice").innerHTML = null;
 document.getElementById("player2choice").innerHTML = null;
 document.getElementById("result1").innerHTML = "?";
 document.getElementById("result2").innerHTML = "?";
+tips.style.display = "none";
 calculate.disabled = true;
 calculate.style.opacity = "0.4";
 calculate.style.color = "#ffffff";
