@@ -27,7 +27,7 @@
   <div class="container flex-center outer-margin">
     <div class="ver-padding inner-body1 main-content">
       
-      <div id="Player1Choices" class="container flex-between" style="min-height: 180px;">
+      <div id="Player1Choices" class="container flex-between" style="min-height: 170px;">
         <div class="hor-padding"><span class="heading">Player</span><br /><div id="player1choice"></div><div id="health"></div><button id="selectButton1" class="select-button" onclick="displayRadioValue1()">Select</button></div>
         <div class="hor-padding">
           <div class="select">
@@ -47,7 +47,7 @@
         </div>
       </div>
       
-      <div id="Player2Choices" class="container flex-between ver-padding" style="min-height: 180px;">
+      <div id="Player2Choices" class="container flex-between ver-padding" style="min-height: 170px;">
         <div class="hor-padding"><span class="heading">Computer</span><br /><div id="player2choice"></div><button id="selectButton2" class="select-button" onclick="displayRadioValue2()">Select</button></div>
         <div class="hor-padding">
           <div class="select">
@@ -67,12 +67,12 @@
         </div>
       </div>
       
-      <div class="container flex-center items-center" style="min-height: 137px;">
-        <div id="result1" class="heading center-text" style="width: 50%;">?</div>
+      <div class="container flex-center items-center" style="min-height: 125px;">
+        <div id="result1" class="heading center-text fifty-percent-col">?</div>
         <div class="center-text hor-padding">
           <span class="heading">VS</span>
         </div>
-        <div id="result2" class="heading center-text" style="width: 50%;">?</div>
+        <div id="result2" class="heading center-text fifty-percent-col">?</div>
       </div>
       
       <div class="container flex-center">
@@ -90,29 +90,29 @@
               <img id="poisonIcon1" src="images/poisonIcon.png" width="50" style="opacity: 0.2;">
               <img id="freezeIcon1" src="images/freezeIcon.png" width="50" style="opacity: 0.2;">
             </div>
-            <div class="container flex-center ver-padding">
+            <div class="container flex-center">
               <button id="attack1" class="beginGame" onclick="attacker1(dude1,dude2)">Attack</button>
             </div>
-            <div class="container flex-center ver-padding">
+            <div class="container flex-center">
               <button id="heal1" class="beginGame" onclick="healer1(dude1)">Heal</button>
             </div>
-            <div class="container flex-center ver-padding">
-              <button id="critHit1" class="beginGame" onclick="critHitter1(dude1)">Critical Hit</button>
+            <div class="container flex-center">
+              <button id="critHit1" class="beginGame" onclick="critHitter1(dude1,dude2)">Critical Hit</button>
             </div>
-            <div class="container flex-center ver-padding">
+            <div class="container flex-center">
               <button id="poison1" class="beginGame" onclick="poisoner1(dude1)">Poison</button>
             </div>
-            <div class="container flex-center ver-padding">
+            <div class="container flex-center">
               <button id="freeze1" class="beginGame" onclick="freezer1(dude1)">Freeze</button>
             </div>
           </div>
         </div>
         
         <div id="buttons" class="center-text hor-padding" style="vertical-align: bottom; width: 100%;">
-          <div class="container flex-center ver-padding">
+          <div class="container flex-center">
             <button id="enable" class="beginGame" onclick="enableStart()">Ready to Begin?</button>
           </div>
-          <div class="container flex-center ver-padding">
+          <div class="container flex-center">
             <button id="calculate" class="startGame" onclick="countdown()">Start Game</button>
           </div>
         </div>
@@ -126,19 +126,19 @@
               <img id="poisonIcon2" src="images/poisonIcon.png" width="50" style="opacity: 0.2;">
               <img id="freezeIcon2" src="images/freezeIcon.png" width="50" style="opacity: 0.2;">
             </div>
-            <div class="container flex-center ver-padding">
+            <div class="container flex-center">
               <button id="attack2" class="beginGame" onclick="attacker2(dude1,dude2)">Attack</button>
             </div>
-            <div class="container flex-center ver-padding">
+            <div class="container flex-center">
               <button id="heal2" class="beginGame" onclick="healer2(dude2)">Heal</button>
             </div>
-            <div class="container flex-center ver-padding">
-              <button id="critHit2" class="beginGame" onclick="critHitter2(dude2)">Critical Hit</button>
+            <div class="container flex-center">
+              <button id="critHit2" class="beginGame" onclick="critHitter2(dude1,dude2)">Critical Hit</button>
             </div>
-            <div class="container flex-center ver-padding">
+            <div class="container flex-center">
               <button id="poison2" class="beginGame" onclick="poisoner2(dude2)">Poison</button>
             </div>
-            <div class="container flex-center ver-padding">
+            <div class="container flex-center">
               <button id="freeze2" class="beginGame" onclick="freezer2(dude1)">Freeze</button>
             </div>
           </div>
@@ -146,7 +146,7 @@
         
       </div>
       
-      <div class="container flex-center ver-padding">
+      <div class="container flex-center">
         <button id="reset" class="resetGame" onclick="resetGame()">Reset Game</button>
       </div>
       
