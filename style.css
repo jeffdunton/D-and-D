@@ -539,13 +539,32 @@ buttons {
           filter: hue-rotate(90deg) brightness(10%) grayscale(10%);
       }
 
-      #tip1,#tip2,#tip3,#tip4,#tip5 {
-        height: 51px;
-                line-height: 51px;
-        vertical-align: middle;
-      }
-            #tipSpacerCell {
-        height: 54px;
-      }
+      .tooltip {
+  display: block;
+  vertical-align: middle;
+    height: 51px;
+    line-height: 51px;
+    cursor: help;
+}
+      .tooltip:hover {
+color: green;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 
     
