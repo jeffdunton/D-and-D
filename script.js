@@ -8,14 +8,14 @@ var player1 = null;
 var player2 = null;
 
 var dude1 = {
-  "type": "Player 1",
+  "type": "Player",
   "class": null,
   "health": null,
   "base_damage": null,
   "regen": null  
 }
 var dude2 = {
-  "type": "Player 2",
+  "type": "Computer",
   "class": null,
   "health": null,
   "base_damage": null,

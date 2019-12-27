@@ -111,7 +111,7 @@ a:link {
   transition: all 1s linear;
 }
 img {
-    transition: all 1s linear;
+  transition: all 0.2s linear;
 }
 .inner-container {
   display: block;
@@ -524,29 +524,22 @@ body {
         position : relative; bottom:0;
       }
 
-      #error {
-        height: 30px;
-        color: red;
-        overflow: scroll;
-      }
+#error {
+  height: 30px;
+  color: red;
+  overflow: scroll;
+}
 
 buttons {
-      transition: all 1s linear;
-      }
+  transition: all 1s linear;
+}
 
-      .image-overlay {
-         -webkit-filter: hue-rotate(90deg) brightness(10%) grayscale(10%);
-          filter: hue-rotate(90deg) brightness(10%) grayscale(10%);
-      }
-
-      .tooltip {
+.tooltip {
   display: block;
   vertical-align: middle;
-    height: 51px;
-    line-height: 51px;
-    cursor: help;
+  height: 51px;
 }
-      .tooltip:hover {
+.tooltip:hover {
 color: green;
 }
 .tooltip .tooltiptext {
@@ -557,14 +550,16 @@ color: green;
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
-
-  /* Position the tooltip */
   position: absolute;
   z-index: 1;
 }
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.tooltip:hover img {
+  opacity: 0.5;
 }
 
     
