@@ -594,7 +594,7 @@ function critHitter1(player, enemy) {
   }
 }
 function critHitter2(player, enemy) {
-  critHitAnimation(critHitIcon1); 
+  critHitAnimation(critHitIcon2); 
   var loser = player.class + " has been defeated. " + "The winner is " + enemy.class;
   var enemy_attack = critHit_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
