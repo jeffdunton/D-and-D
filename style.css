@@ -111,7 +111,7 @@ a:link {
   transition: all 1s linear;
 }
 img {
-  transition: all 0.2s linear;
+  transition: all 1s linear;
 }
 .inner-container {
   display: block;
@@ -560,6 +560,11 @@ color: green;
 
 .tooltip:hover img {
   opacity: 0.5;
+  transition: all 0.2s linear;
+}
+
+#result1, #result2 {
+  transition: all 1s linear;
 }
 
     
