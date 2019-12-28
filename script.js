@@ -1,8 +1,8 @@
 // initilize player/sound variables
-const warrior = "Warrior<br>HP: 1000<br>Base Damage: 10<br>Regen: 5";
-const knight = "Knight<br>HP: 1250<br>Base Damage: 8<br>Regen: 2";
-const wizard = "Wizard<br>HP: 850<br>Base Damage: 6<br>Regen: 50";
-const dragon = "Dragon<br>HP: 1400<br>Base Damage: 3<br>Regen: 10";
+const warrior = "Warrior<br>HP: 1000<br>Base Damage: 75<br>Regen: 25";
+const knight = "Knight<br>HP: 1250<br>Base Damage: 50<br>Regen: 10";
+const wizard = "Wizard<br>HP: 750<br>Base Damage: 25<br>Regen: 75";
+const dragon = "Dragon<br>HP: 1350<br>Base Damage: 25<br>Regen: 25";
 
 var player1 = null;
 var player2 = null;
