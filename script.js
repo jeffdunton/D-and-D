@@ -136,23 +136,23 @@ function validatePlayer(player,dudeNumber) {
   if (player === warrior) {
     dudeNumber.class = "Warrior";
     dudeNumber.health = 1000;
-    dudeNumber.base_damage = 10;
-    dudeNumber.regen = 5;
+    dudeNumber.base_damage = 75;
+    dudeNumber.regen = 25;
   } else if (player === knight) {
     dudeNumber.class = "Knight";
     dudeNumber.health = 1250;
-    dudeNumber.base_damage = 8;
-    dudeNumber.regen = 2;
+    dudeNumber.base_damage = 50;
+    dudeNumber.regen = 10;
   } else if (player === wizard) {
     dudeNumber.class = "Wizard";
-    dudeNumber.health = 850;
-    dudeNumber.base_damage = 6;
-    dudeNumber.regen = 25;
+    dudeNumber.health = 750;
+    dudeNumber.base_damage = 25;
+    dudeNumber.regen = 75;
   } else if (player === dragon) {
     dudeNumber.class = "Dragon";
-    dudeNumber.health = 1400;
-    dudeNumber.base_damage = 3;
-    dudeNumber.regen = 10;
+    dudeNumber.health = 1350;
+    dudeNumber.base_damage = 25;
+    dudeNumber.regen = 25;
   }
 }
 
