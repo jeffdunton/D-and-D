@@ -71,13 +71,47 @@ var toolTips = document.getElementById("toolTips");
 var result1 = document.getElementById("result1");
 var result2 = document.getElementById("result2");
 
-// disable/hide buttons 
+// disable/hide initial buttons 
 calculate.disabled = true;
 selectButton1.style.display = "none";
 selectButton2.style.display = "none";
 
 // store active timers so that they can be stopped when needed
 var timeouts = [];
+
+// disable all attack buttons
+function disableButtons() {
+    attack1.disabled = true;
+    attack2.disabled = true;
+    heal1.disabled = true;
+    heal2.disabled = true;
+    critHit1.disabled = true;
+    critHit2.disabled = true;
+    poison1.disabled = true;
+    poison2.disabled = true;
+    freeze1.disabled = true;
+    freeze1.disabled = true;
+    attack1.style.opacity = "0.2";
+    attack2.style.opacity = "0.2";
+    heal1.style.opacity = "0.2";
+    heal2.style.opacity = "0.2";
+    critHit1.style.opacity = "0.2";
+    critHit2.style.opacity = "0.2";
+    poison1.style.opacity = "0.2";
+    poison2.style.opacity = "0.2";
+    freeze1.style.opacity = "0.2";
+    freeze2.style.opacity = "0.2";
+    attack1.style.cursor = "not-allowed";
+    attack2.style.cursor = "not-allowed";
+    heal1.style.cursor = "not-allowed";
+    heal2.style.cursor = "not-allowed";
+    critHit1.style.cursor = "not-allowed";
+    critHit1.style.cursor = "not-allowed";
+    poison1.style.cursor = "not-allowed";
+    poison2.style.cursor = "not-allowed";
+    freeze1.style.cursor = "not-allowed";
+    freeze2.style.cursor = "not-allowed";
+}
 
 // on character icon click, display player selections and Select buttons
 function player1Type(player1) {
@@ -358,36 +392,7 @@ function attacker1(player, enemy) {
   freeze1.style.cursor = "not-allowed";
   if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -438,36 +443,7 @@ function attacker2(player, enemy) {
   freeze2.style.cursor = "not-allowed";
   if (player.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -561,7 +537,7 @@ function critHitter1(player, enemy) {
   var player_attack = critHit_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
   player.health = player.health - 50;
-  element.innerHTML = ("<p>" + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. " + player.class + " lost 50 health and now has " + player.health + "</p>");
+  element.innerHTML = ("<p> Critical Hit! " + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. " + player.class + " lost 50 health and now has " + player.health + "</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   redToWhite(result1);
@@ -598,36 +574,7 @@ function critHitter1(player, enemy) {
   freeze1.style.cursor = "not-allowed";
   if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -643,7 +590,7 @@ function critHitter2(player, enemy) {
   var enemy_attack = critHit_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
   enemy.health = enemy.health - 50;
-  element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class +  " has " + player.health + " health. " +  enemy.class + " lost 50 health and now has " + enemy.health + "</p>");
+  element.innerHTML = ("<p> Critical Hit! " + enemy.class + " did " + enemy_attack + " damage and " + player.class +  " has " + player.health + " health. " +  enemy.class + " lost 50 health and now has " + enemy.health + "</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   redToWhite(result1);
@@ -680,36 +627,7 @@ function critHitter2(player, enemy) {
   freeze2.style.cursor = "not-allowed";
   if (player.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -761,36 +679,7 @@ function poisoner1(player,enemy) {
   freeze1.style.cursor = "not-allowed";
   if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -844,36 +733,7 @@ function poisoner2(player,enemy) {
   freeze2.style.cursor = "not-allowed";
   if (player.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -882,8 +742,102 @@ function poisoner2(player,enemy) {
   } 
 }
 
-function freezer1(player) {
+function freezer1A(player,enemy) {
+  var freeze;
   freezeAnimation(freezeIcon1);
+  var roll = randomNumber(4);
+  if (roll === 3) {
+    attackAnimation(attackIcon1);
+    var loser = enemy.class + " has been defeated. " + "The winner is " + player.class;
+    var player_attack = attack_roll(player.base_damage);
+    enemy.health = enemy.health - player_attack;
+    element.innerHTML = ("<p>Freeze successful! " + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
+    result1.innerHTML = player.class + "<br />" + player.health;
+    result2.innerHTML = enemy.class + "<br />" + enemy.health;
+    redToWhite(result2);
+    if (enemy.health <= 0) {
+    element.innerHTML += loser;
+    disableButtons();
+    error.innerHTML = player.class + " Wins - GAME OVER";
+    gameOverSound.play();
+    for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+    }
+    } else {
+    setTimeout(freezer1B, 3000, dude1, dude2);
+    }
+    } else {
+    player.health = player.health - 100;
+    redToWhite(result1);
+    result1.innerHTML = player.class + "<br />" + player.health;
+    element.innerHTML = ("<p>Freeze failed! " + player.class + " lost 100 health and now has " + player.health + " health.</p>");
+    if (player.health <= 0) {
+    element.innerHTML += loser;
+    disableButtons();
+    error.innerHTML = enemy.class + " Wins - GAME OVER";
+    gameOverSound.play();
+    for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+    }
+    } else {
+    attack2.disabled = false;
+    attack2.style.opacity = "1.0";
+    attack2.style.cursor = "pointer";
+    heal2.disabled = false;
+    heal2.style.opacity = "1.0";
+    heal2.style.cursor = "pointer";
+    critHit2.disabled = false;
+    critHit2.style.opacity = "1.0";
+    critHit2.style.cursor = "pointer";
+    poison2.disabled = false;
+    poison2.style.opacity = "1.0";
+    poison2.style.cursor = "pointer";
+    freeze2.disabled = false;
+    freeze2.style.opacity = "1.0";
+    freeze2.style.cursor = "pointer";
+    attack1.disabled = true;
+    attack1.style.opacity = "0.2";
+    attack1.style.cursor = "not-allowed";
+    heal1.disabled = true;
+    heal1.style.opacity = "0.2";
+    heal1.style.cursor = "not-allowed";
+    critHit1.disabled = true;
+    critHit1.style.opacity = "0.2";
+    critHit1.style.cursor = "not-allowed";
+    poison1.disabled = true;
+    poison1.style.opacity = "0.2";
+    poison1.style.cursor = "not-allowed";
+    freeze1.disabled = true;
+    freeze1.style.opacity = "0.2";
+    freeze1.style.cursor = "not-allowed";
+    setTimeout(player2Move, 3000);
+    }
+  }
+}
+
+function freezer1B(player,enemy) {
+  var freeze;
+  freezeAnimation(freezeIcon1);
+  var roll = randomNumber(4);
+  attackAnimation(attackIcon1);
+  var loser = enemy.class + " has been defeated. " + "The winner is " + player.class;
+  var player_attack = attack_roll(player.base_damage);
+  enemy.health = enemy.health - player_attack;
+  element.innerHTML = ("<p>" + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
+  result1.innerHTML = player.class + "<br />" + player.health;
+  result2.innerHTML = enemy.class + "<br />" + enemy.health;
+  redToWhite(result2);
+  if (enemy.health <= 0) {
+    element.innerHTML += loser;
+    disableButtons();
+    error.innerHTML = player.class + " Wins - GAME OVER";
+    gameOverSound.play();
+    for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+    }
+  } else {
+    setTimeout(attacker1, 3000, dude1, dude2);
+  }
 }
 
 function freezer2(player) {
@@ -925,6 +879,7 @@ function heal_roll(regen) {
 function critHit_roll(base_damage) {
   return Math.floor(Math.random() * 250) + base_damage;
 }
+
 function playerPoison(enemy) {
   var poisonAmount = Math.floor(Math.random() * 25);
   redToWhite(result2);
@@ -933,36 +888,7 @@ function playerPoison(enemy) {
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -980,36 +906,7 @@ function playerPoison2(enemy) {
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -1027,36 +924,7 @@ function playerPoison3(enemy) {
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -1074,36 +942,7 @@ function playerPoison4(enemy) {
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -1121,36 +960,7 @@ function playerPoison5(enemy) {
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
     if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -1166,36 +976,7 @@ function enemyPoison(enemy) {
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
     if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -1213,36 +994,7 @@ function enemyPoison2(enemy) {
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
     if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -1260,36 +1012,7 @@ function enemyPoison3(enemy) {
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
     if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -1307,36 +1030,7 @@ function enemyPoison4(enemy) {
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
     if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -1354,36 +1048,7 @@ function enemyPoison5(enemy) {
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
     element.innerHTML += loser;
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+    disableButtons();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
