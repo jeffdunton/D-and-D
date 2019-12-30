@@ -70,6 +70,8 @@ var error = document.getElementById("error");
 var toolTips = document.getElementById("toolTips");
 var result1 = document.getElementById("result1");
 var result2 = document.getElementById("result2");
+var radio1 = document.getElementsByName('player1');
+var radio2 = document.getElementsByName('player2');
 
 // disable/hide initial buttons 
 calculate.disabled = true;
@@ -193,7 +195,7 @@ function player2Type(player2) {
 
 // on select button click display player selections above Start Game button
 function displayRadioValue1() { 
-  var ele = document.getElementsByName('player1'); 
+  var ele = document.getElementsByName('player1');
   for(i = 0; i < ele.length; i++) { 
     if(ele[i].checked) {
       var player1 = ele[i].value;
@@ -617,8 +619,72 @@ function freezer1B(player,enemy) {
   }
 }
 
-function freezer2(player) {
-  freezeAnimation(freezeIcon2); 
+function freezer2A(player,enemy) {
+  var freeze;
+  freezeAnimation(freezeIcon2);
+  var roll = randomNumber(4);
+  if (roll === 3) {
+    attackAnimation(attackIcon2);
+    var loser = player.class + " has been defeated. " + "The winner is " + enemy.class;
+    var enemy_attack = attack_roll(enemy.base_damage);
+    player.health = player.health - enemy_attack;
+    element.innerHTML = ("<p>Freeze successful! " + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
+    result1.innerHTML = player.class + "<br />" + player.health;
+    result2.innerHTML = enemy.class + "<br />" + enemy.health;
+    redToWhite(result1);
+    if (player.health <= 0) {
+    element.innerHTML += loser;
+    disableButtons();
+    error.innerHTML = enemy.class + " Wins - GAME OVER";
+    gameOverSound.play();
+    for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+    }
+    } else {
+    setTimeout(freezer2B, 3000, dude1, dude2);
+    }
+    } else {
+    enemy.health = enemy.health - 100;
+    redToWhite(result2);
+    result2.innerHTML = enemy.class + "<br />" + enemy.health;
+    element.innerHTML = ("<p>Freeze failed! " + enemy.class + " lost 100 health and now has " + enemy.health + " health.</p>");
+    if (enemy.health <= 0) {
+    element.innerHTML += loser;
+    disableButtons();
+    error.innerHTML = player.class + " Wins - GAME OVER";
+    gameOverSound.play();
+    for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+    }
+    } else {
+    disable2Enable1();
+    }
+  } 
+}
+
+function freezer2B(player,enemy) {
+  var freeze;
+  freezeAnimation(freezeIcon2);
+  var roll = randomNumber(4);
+  attackAnimation(attackIcon2);
+  var loser = player.class + " has been defeated. " + "The winner is " + enemy.class;
+  var enemy_attack = attack_roll(enemy.base_damage);
+  player.health = player.health - enemy_attack;
+  element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
+  result1.innerHTML = player.class + "<br />" + player.health;
+  result2.innerHTML = enemy.class + "<br />" + enemy.health;
+  redToWhite(result1);
+  if (player.health <= 0) {
+    element.innerHTML += loser;
+    disableButtons();
+    error.innerHTML = player.class + " Wins - GAME OVER";
+    gameOverSound.play();
+    for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+    }
+  } else {
+    setTimeout(autoAttack, 3000);
+  }
 }
 
 // auto attacks
@@ -635,7 +701,7 @@ function autoPoison() {
   poisoner2(dude1,dude2);
 }
 function autoFreeze() {
-  freezer2(dude2);
+  freezer2A(dude1,dude2);
 }
 
 var autoTurn = [autoAttack, autoHeal, autoCritHit, autoPoison, autoFreeze];
