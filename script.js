@@ -38,6 +38,7 @@ var readySound = document.getElementById("readySound");
 var poisonSound = document.getElementById("poisonSound");
 var critHitSound = document.getElementById("critHitSound");
 var freezeSound = document.getElementById("freezeSound");
+var battleThemeSound = document.getElementById("battleThemeSound");
 
 var attackIcon1 = document.getElementById("attackIcon1");
 var attackIcon2 = document.getElementById("attackIcon2");
@@ -367,6 +368,7 @@ setTimeout(startGame, 3000)
 
 // hide buttons and enable attack screen buttons
 function startGame() {
+  battleThemeSound.play();
   document.getElementById("result1").innerHTML = dude1.class + "<br />" + dude1.health;
   document.getElementById("result2").innerHTML = dude2.class + "<br />" + dude2.health;
   buttons.style.width = "39px";
@@ -404,6 +406,7 @@ function attacker1(player, enemy) {
   if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -426,6 +429,7 @@ function attacker2(player, enemy) {
   if (player.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -470,6 +474,7 @@ function critHitter1(player, enemy) {
   if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -494,6 +499,7 @@ function critHitter2(player, enemy) {
   if (player.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -517,6 +523,7 @@ function poisoner1(player,enemy) {
   if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -542,6 +549,7 @@ function poisoner2(player,enemy) {
   if (player.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -556,6 +564,7 @@ function freezer1A(player,enemy) {
   var roll = randomNumber(4);
   if (roll === 3) {
     attackAnimation(attackIcon1);
+    disableButtons();
     var loser = enemy.class + " has been defeated. " + "The winner is " + player.class;
     var player_attack = attack_roll(player.base_damage);
     enemy.health = enemy.health - player_attack;
@@ -566,6 +575,7 @@ function freezer1A(player,enemy) {
     if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -582,6 +592,7 @@ function freezer1A(player,enemy) {
     if (player.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -599,6 +610,7 @@ function freezer1B(player,enemy) {
   freezeAnimation(freezeIcon1);
   var roll = randomNumber(4);
   attackAnimation(attackIcon1);
+  disableButtons();
   var loser = enemy.class + " has been defeated. " + "The winner is " + player.class;
   var player_attack = attack_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
@@ -609,6 +621,7 @@ function freezer1B(player,enemy) {
   if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -625,6 +638,7 @@ function freezer2A(player,enemy) {
   var roll = randomNumber(4);
   if (roll === 3) {
     attackAnimation(attackIcon2);
+    disableButtons();
     var loser = player.class + " has been defeated. " + "The winner is " + enemy.class;
     var enemy_attack = attack_roll(enemy.base_damage);
     player.health = player.health - enemy_attack;
@@ -635,6 +649,7 @@ function freezer2A(player,enemy) {
     if (player.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -665,6 +680,7 @@ function freezer2A(player,enemy) {
 function freezer2B(player,enemy) {
   var freeze;
   freezeAnimation(freezeIcon2);
+  disableButtons();
   var roll = randomNumber(4);
   attackAnimation(attackIcon2);
   var loser = player.class + " has been defeated. " + "The winner is " + enemy.class;
@@ -677,6 +693,7 @@ function freezer2B(player,enemy) {
   if (player.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -732,6 +749,7 @@ function playerPoison(enemy) {
   if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -750,6 +768,7 @@ function playerPoison2(enemy) {
   if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -768,6 +787,7 @@ function playerPoison3(enemy) {
   if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -786,6 +806,7 @@ function playerPoison4(enemy) {
   if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -804,6 +825,7 @@ function playerPoison5(enemy) {
     if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -820,6 +842,7 @@ function enemyPoison(enemy) {
     if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -838,6 +861,7 @@ function enemyPoison2(enemy) {
     if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -856,6 +880,7 @@ function enemyPoison3(enemy) {
     if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -874,6 +899,7 @@ function enemyPoison4(enemy) {
     if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -892,6 +918,7 @@ function enemyPoison5(enemy) {
   if (enemy.health <= 0) {
     element.innerHTML += loser;
     disableButtons();
+    battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
@@ -905,7 +932,8 @@ function resetGame() {
 for (var i = 0; i < timeouts.length; i++) {
   clearTimeout(timeouts[i]);
 }
-swipeSound.play(); 
+swipeSound.play();
+battleThemeSound.pause(); 
 document.getElementById("player1choice").innerHTML = null;
 document.getElementById("player2choice").innerHTML = null;
 result1.innerHTML = "?";
