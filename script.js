@@ -75,6 +75,8 @@ var radio1 = document.getElementsByName('player1');
 var radio2 = document.getElementsByName('player2');
 var attackUI1 = document.getElementById("attackUI1");
 var attackUI2 = document.getElementById("attackUI2");
+var player1Choice = document.getElementById("Player1Choice");
+var player2Choice = document.getElementById("Player2Choice");
 var player1Choices = document.getElementById("Player1Choices");
 var player2Choices = document.getElementById("Player2Choices");
 
@@ -189,12 +191,12 @@ function disable2Enable1() {
 // on character icon click, display player selections and Select buttons
 function player1Type(player1) {
   karateSound.play(); 
-  document.getElementById("player1choice").innerHTML = player1;
+  player1Choice.innerHTML = player1;
   selectButton1.style.display = "inline-block";
 }
 function player2Type(player2) {
   karateSound.play(); 
-  document.getElementById("player2choice").innerHTML = player2;
+  player2Choice.innerHTML = player2;
   selectButton2.style.display = "inline-block";
 }
 
@@ -939,8 +941,8 @@ for (var i = 0; i < timeouts.length; i++) {
 }
 swipeSound.play();
 battleThemeSound.pause(); 
-document.getElementById("player1choice").innerHTML = null;
-document.getElementById("player2choice").innerHTML = null;
+player1Choice.innerHTML = null;
+player2Choice.innerHTML = null;
 result1.innerHTML = "?";
 result2.innerHTML = "?";
 calculate.disabled = true;
