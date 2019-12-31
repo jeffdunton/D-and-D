@@ -65,14 +65,18 @@ var selectButton1 = document.getElementById("selectButton1");
 var selectButton2 = document.getElementById("selectButton2");
 
 var element = document.getElementById("error");
+var error = document.getElementById("error");
 var buttons = document.getElementById("buttons");
 var enable = document.getElementById("enable");
-var error = document.getElementById("error");
 var toolTips = document.getElementById("toolTips");
 var result1 = document.getElementById("result1");
 var result2 = document.getElementById("result2");
 var radio1 = document.getElementsByName('player1');
 var radio2 = document.getElementsByName('player2');
+var attackUI1 = document.getElementById("attackUI1");
+var attackUI2 = document.getElementById("attackUI2");
+var player1Choices = document.getElementById("Player1Choices");
+var player2Choices = document.getElementById("Player2Choices");
 
 // disable/hide initial buttons 
 calculate.disabled = true;
@@ -369,20 +373,20 @@ setTimeout(startGame, 3000)
 // hide buttons and enable attack screen buttons
 function startGame() {
   battleThemeSound.play();
-  document.getElementById("result1").innerHTML = dude1.class + "<br />" + dude1.health;
-  document.getElementById("result2").innerHTML = dude2.class + "<br />" + dude2.health;
+  result1.innerHTML = dude1.class + "<br />" + dude1.health;
+  result2.innerHTML = dude2.class + "<br />" + dude2.health;
   buttons.style.width = "39px";
   buttons.style.padding.left = "0px";
   buttons.style.padding.right = "0px";
   enable.style.display = "none";
   calculate.style.display = "none";
   toolTips.style.display = "block";
-  document.getElementById("attackUI1").style.display = "block";
-  document.getElementById("attackUI2").style.display = "block";
-  document.getElementById("attackUI1").style.width = "50%";
-  document.getElementById("attackUI2").style.width = "50%";
-  document.getElementById("Player1Choices").style.opacity = "0.2";
-  document.getElementById("Player2Choices").style.opacity = "0.2";
+  attackUI1.style.display = "block";
+  attackUI2.style.display = "block";
+  attackUI1.style.width = "50%";
+  attackUI2.style.width = "50%";
+  player1Choices.style.opacity = "0.2";
+  player2Choices.style.opacity = "0.2";
   selectButton1.disabled = true;
   selectButton2.disabled = true;
   var inputs = document.getElementsByTagName("input"); 
@@ -395,7 +399,6 @@ function startGame() {
 // attack functions
 function attacker1(player, enemy) {
   attackAnimation(attackIcon1);
-  var loser = enemy.class + " has been defeated. " + "The winner is " + player.class;
   var player_attack = attack_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
   element.innerHTML = ("<p>" + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
@@ -404,7 +407,6 @@ function attacker1(player, enemy) {
   redToWhite(result2);
   disable1Enable2();
   if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
@@ -418,7 +420,6 @@ function attacker1(player, enemy) {
 }
 function attacker2(player, enemy) {
   attackAnimation(attackIcon2);
-  var loser = player.class + " has been defeated. " + "The winner is " + enemy.class;
   var enemy_attack = attack_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
   element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class +  " has " + player.health + " health. </p>");
@@ -427,7 +428,6 @@ function attacker2(player, enemy) {
   redToWhite(result1);
   disable2Enable1();
   if (player.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
@@ -461,7 +461,6 @@ function healer2(enemy) {
 // crit hit functions
 function critHitter1(player, enemy) {
   critHitAnimation(critHitIcon1); 
-  var loser = enemy.class + " has been defeated. " + "The winner is " + player.class;
   var player_attack = critHit_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
   player.health = player.health - 50;
@@ -472,7 +471,6 @@ function critHitter1(player, enemy) {
   redToWhite(result2);
   disable1Enable2();
   if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
@@ -480,13 +478,21 @@ function critHitter1(player, enemy) {
     for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
     }
-  } else {
+  } else if (player.health <= 0) {
+    disableButtons();
+    battleThemeSound.pause();
+    error.innerHTML = enemy.class + " Wins - GAME OVER";
+    gameOverSound.play();
+    for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+    }
+  }
+   else {
     setTimeout(player2Move, 3000);
   }
 }
 function critHitter2(player, enemy) {
   critHitAnimation(critHitIcon2); 
-  var loser = player.class + " has been defeated. " + "The winner is " + enemy.class;
   var enemy_attack = critHit_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
   enemy.health = enemy.health - 50;
@@ -497,10 +503,17 @@ function critHitter2(player, enemy) {
   redToWhite(result2);
   disable2Enable1();
   if (player.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
+    gameOverSound.play();
+    for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+    }
+  } else if (enemy.health <= 0) {
+    disableButtons();
+    battleThemeSound.pause();
+    error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
@@ -510,7 +523,6 @@ function critHitter2(player, enemy) {
 
 function poisoner1(player,enemy) {
   poisonAnimation(poisonIcon1);
-  var loser = enemy.class + " has been defeated. " + "The winner is " + player.class;
   enemy.health = enemy.health - 25;
   player.health = player.health - 75;
   element.innerHTML = ("<p>" + player.class + " poisoned " + enemy.class + ". " + enemy.class + " now has " + enemy.health + " health. " + player.class + " lost 75 health and now has " + player.health + " health.</p>");
@@ -521,10 +533,17 @@ function poisoner1(player,enemy) {
   setTimeout(playerPoison, 3000, enemy);
   disable1Enable2();
   if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
+    gameOverSound.play();
+    for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+    }
+  } else if (player.health <= 0) {
+    disableButtons();
+    battleThemeSound.pause();
+    error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
@@ -536,7 +555,6 @@ function poisoner1(player,enemy) {
 
 function poisoner2(player,enemy) {
   poisonAnimation(poisonIcon2);
-  var loser = player.class + " has been defeated. " + "The winner is " + enemy.class;
   enemy.health = enemy.health - 75;
   player.health = player.health - 25;
   element.innerHTML = ("<p>" + enemy.class + " poisoned " + player.class + ". " + player.class + " now has " + player.health + " health. " + enemy.class + " lost 75 health and now has " + enemy.health + " health.</p>");
@@ -547,16 +565,23 @@ function poisoner2(player,enemy) {
   setTimeout(enemyPoison, 3000, player);
   disable2Enable1();
   if (player.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
+  }
+  } else if (enemy.health <= 0) {
+    disableButtons();
+    battleThemeSound.pause();
+    error.innerHTML = player.class + " Wins - GAME OVER";
+    gameOverSound.play();
+    for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
     }
   } 
-}
+} 
 
 function freezer1A(player,enemy) {
   var freeze;
@@ -565,7 +590,6 @@ function freezer1A(player,enemy) {
   if (roll === 3) {
     attackAnimation(attackIcon1);
     disableButtons();
-    var loser = enemy.class + " has been defeated. " + "The winner is " + player.class;
     var player_attack = attack_roll(player.base_damage);
     enemy.health = enemy.health - player_attack;
     element.innerHTML = ("<p>Freeze successful! " + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
@@ -573,7 +597,6 @@ function freezer1A(player,enemy) {
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     redToWhite(result2);
     if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
@@ -590,7 +613,6 @@ function freezer1A(player,enemy) {
     result1.innerHTML = player.class + "<br />" + player.health;
     element.innerHTML = ("<p>Freeze failed! " + player.class + " lost 100 health and now has " + player.health + " health.</p>");
     if (player.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
@@ -611,7 +633,6 @@ function freezer1B(player,enemy) {
   var roll = randomNumber(4);
   attackAnimation(attackIcon1);
   disableButtons();
-  var loser = enemy.class + " has been defeated. " + "The winner is " + player.class;
   var player_attack = attack_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
   element.innerHTML = ("<p>" + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
@@ -619,7 +640,6 @@ function freezer1B(player,enemy) {
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   redToWhite(result2);
   if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
@@ -639,7 +659,6 @@ function freezer2A(player,enemy) {
   if (roll === 3) {
     attackAnimation(attackIcon2);
     disableButtons();
-    var loser = player.class + " has been defeated. " + "The winner is " + enemy.class;
     var enemy_attack = attack_roll(enemy.base_damage);
     player.health = player.health - enemy_attack;
     element.innerHTML = ("<p>Freeze successful! " + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
@@ -647,7 +666,6 @@ function freezer2A(player,enemy) {
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     redToWhite(result1);
     if (player.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
@@ -664,7 +682,6 @@ function freezer2A(player,enemy) {
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     element.innerHTML = ("<p>Freeze failed! " + enemy.class + " lost 100 health and now has " + enemy.health + " health.</p>");
     if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
@@ -683,7 +700,6 @@ function freezer2B(player,enemy) {
   disableButtons();
   var roll = randomNumber(4);
   attackAnimation(attackIcon2);
-  var loser = player.class + " has been defeated. " + "The winner is " + enemy.class;
   var enemy_attack = attack_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
   element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
@@ -691,7 +707,6 @@ function freezer2B(player,enemy) {
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   redToWhite(result1);
   if (player.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
@@ -747,7 +762,6 @@ function playerPoison(enemy) {
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
@@ -766,7 +780,6 @@ function playerPoison2(enemy) {
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
@@ -785,7 +798,6 @@ function playerPoison3(enemy) {
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
@@ -804,7 +816,6 @@ function playerPoison4(enemy) {
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
@@ -823,7 +834,6 @@ function playerPoison5(enemy) {
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
     if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
@@ -840,7 +850,6 @@ function enemyPoison(enemy) {
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
     if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
@@ -859,7 +868,6 @@ function enemyPoison2(enemy) {
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
     if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
@@ -878,7 +886,6 @@ function enemyPoison3(enemy) {
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
     if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
@@ -897,7 +904,6 @@ function enemyPoison4(enemy) {
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
     if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
@@ -916,7 +922,6 @@ function enemyPoison5(enemy) {
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
-    element.innerHTML += loser;
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = "Poisoned to death! - GAME OVER";
@@ -961,10 +966,10 @@ var ele = document.getElementsByName("player1");
     ele[i].checked = false;
 window.player1 = null;
 window.player2 = null;
-document.getElementById("attackUI1").style.display = "none";
-document.getElementById("attackUI2").style.display = "none";
-document.getElementById("Player1Choices").style.opacity = "1.0";
-document.getElementById("Player2Choices").style.opacity = "1.0";
+attackUI1.style.display = "none";
+attackUI2.style.display = "none";
+player1Choices.style.opacity = "1.0";
+player2Choices.style.opacity = "1.0";
 selectButton1.disabled = false;
 selectButton2.disabled = false;
 selectButton1.style.display = "none";
