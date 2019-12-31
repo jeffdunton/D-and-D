@@ -88,36 +88,36 @@ var timeouts = [];
 
 // disable all attack buttons
 function disableButtons() {
-    attack1.disabled = true;
-    attack2.disabled = true;
-    heal1.disabled = true;
-    heal2.disabled = true;
-    critHit1.disabled = true;
-    critHit2.disabled = true;
-    poison1.disabled = true;
-    poison2.disabled = true;
-    freeze1.disabled = true;
-    freeze1.disabled = true;
-    attack1.style.opacity = "0.2";
-    attack2.style.opacity = "0.2";
-    heal1.style.opacity = "0.2";
-    heal2.style.opacity = "0.2";
-    critHit1.style.opacity = "0.2";
-    critHit2.style.opacity = "0.2";
-    poison1.style.opacity = "0.2";
-    poison2.style.opacity = "0.2";
-    freeze1.style.opacity = "0.2";
-    freeze2.style.opacity = "0.2";
-    attack1.style.cursor = "not-allowed";
-    attack2.style.cursor = "not-allowed";
-    heal1.style.cursor = "not-allowed";
-    heal2.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    critHit1.style.cursor = "not-allowed";
-    poison1.style.cursor = "not-allowed";
-    poison2.style.cursor = "not-allowed";
-    freeze1.style.cursor = "not-allowed";
-    freeze2.style.cursor = "not-allowed";
+  attack1.disabled = true;
+  attack2.disabled = true;
+  heal1.disabled = true;
+  heal2.disabled = true;
+  critHit1.disabled = true;
+  critHit2.disabled = true;
+  poison1.disabled = true;
+  poison2.disabled = true;
+  freeze1.disabled = true;
+  freeze1.disabled = true;
+  attack1.style.opacity = "0.2";
+  attack2.style.opacity = "0.2";
+  heal1.style.opacity = "0.2";
+  heal2.style.opacity = "0.2";
+  critHit1.style.opacity = "0.2";
+  critHit2.style.opacity = "0.2";
+  poison1.style.opacity = "0.2";
+  poison2.style.opacity = "0.2";
+  freeze1.style.opacity = "0.2";
+  freeze2.style.opacity = "0.2";
+  attack1.style.cursor = "not-allowed";
+  attack2.style.cursor = "not-allowed";
+  heal1.style.cursor = "not-allowed";
+  heal2.style.cursor = "not-allowed";
+  critHit1.style.cursor = "not-allowed";
+  critHit1.style.cursor = "not-allowed";
+  poison1.style.cursor = "not-allowed";
+  poison2.style.cursor = "not-allowed";
+  freeze1.style.cursor = "not-allowed";
+  freeze2.style.cursor = "not-allowed";
 }
 
 function disable1Enable2() {
@@ -531,6 +531,10 @@ function poisoner1(player,enemy) {
   redToWhite(result1);
   redToWhite(result2);
   setTimeout(playerPoison, 3000, enemy);
+  setTimeout(playerPoison, 6000, enemy);
+  setTimeout(playerPoison, 9000, enemy);
+  setTimeout(playerPoison, 12000, enemy);
+  setTimeout(playerPoison, 15000, enemy);
   disable1Enable2();
   if (enemy.health <= 0) {
     disableButtons();
@@ -563,6 +567,10 @@ function poisoner2(player,enemy) {
   redToWhite(result1);
   redToWhite(result2);
   setTimeout(enemyPoison, 3000, player);
+  setTimeout(enemyPoison, 6000, player);
+  setTimeout(enemyPoison, 9000, player);
+  setTimeout(enemyPoison, 12000, player);
+  setTimeout(enemyPoison, 15000, player);
   disable2Enable1();
   if (player.health <= 0) {
     disableButtons();
@@ -571,7 +579,7 @@ function poisoner2(player,enemy) {
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
-  }
+    }
   } else if (enemy.health <= 0) {
     disableButtons();
     battleThemeSound.pause();
@@ -596,7 +604,7 @@ function freezer1A(player,enemy) {
     result1.innerHTML = player.class + "<br />" + player.health;
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     redToWhite(result2);
-    if (enemy.health <= 0) {
+  if (enemy.health <= 0) {
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = player.class + " Wins - GAME OVER";
@@ -604,15 +612,15 @@ function freezer1A(player,enemy) {
     for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
     }
-    } else {
+  } else {
     setTimeout(freezer1B, 3000, dude1, dude2);
     }
-    } else {
+  } else {
     player.health = player.health - 100;
     redToWhite(result1);
     result1.innerHTML = player.class + "<br />" + player.health;
     element.innerHTML = ("<p>Freeze failed! " + player.class + " lost 100 health and now has " + player.health + " health.</p>");
-    if (player.health <= 0) {
+  if (player.health <= 0) {
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
@@ -620,7 +628,7 @@ function freezer1A(player,enemy) {
     for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
     }
-    } else {
+  } else {
     disable1Enable2();
     setTimeout(player2Move, 3000);
     }
@@ -665,7 +673,7 @@ function freezer2A(player,enemy) {
     result1.innerHTML = player.class + "<br />" + player.health;
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     redToWhite(result1);
-    if (player.health <= 0) {
+  if (player.health <= 0) {
     disableButtons();
     battleThemeSound.pause();
     error.innerHTML = enemy.class + " Wins - GAME OVER";
@@ -673,22 +681,22 @@ function freezer2A(player,enemy) {
     for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
     }
-    } else {
+  } else {
     setTimeout(freezer2B, 3000, dude1, dude2);
     }
-    } else {
+  } else {
     enemy.health = enemy.health - 100;
     redToWhite(result2);
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     element.innerHTML = ("<p>Freeze failed! " + enemy.class + " lost 100 health and now has " + enemy.health + " health.</p>");
-    if (enemy.health <= 0) {
+  if (enemy.health <= 0) {
     disableButtons();
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
     }
-    } else {
+  } else {
     disable2Enable1();
     }
   } 
@@ -741,7 +749,7 @@ function randomNumber(x) {
 	return Math.floor( Math.random() * x );
 }
 function player2Move() {
-autoTurn[ randomNumber(autoTurn.length) ]();
+  autoTurn[ randomNumber(autoTurn.length) ]();
 }
 
 // random attack and heal generation
@@ -769,153 +777,9 @@ function playerPoison(enemy) {
     for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
     } 
-  } else {
-    timeouts.push(setTimeout(playerPoison2, 3000, enemy));
-  }
-}
-function playerPoison2(enemy) {
-  var poisonAmount = Math.floor(Math.random() * 25);
-  redToWhite(result2);
-  enemy.health = enemy.health - poisonAmount;
-  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
-  result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  if (enemy.health <= 0) {
-    disableButtons();
-    battleThemeSound.pause();
-    error.innerHTML = "Poisoned to death! - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    }
-  } else {
-    timeouts.push(setTimeout(playerPoison3, 3000, enemy));
-  }
-}
-function playerPoison3(enemy) {
-  var poisonAmount = Math.floor(Math.random() * 25);
-  redToWhite(result2);
-  enemy.health = enemy.health - poisonAmount;
-  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
-  result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  if (enemy.health <= 0) {
-    disableButtons();
-    battleThemeSound.pause();
-    error.innerHTML = "Poisoned to death! - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    }
-  } else {
-    timeouts.push(setTimeout(playerPoison4, 3000, enemy));
-  }
-}
-function playerPoison4(enemy) {
-  var poisonAmount = Math.floor(Math.random() * 25);
-  redToWhite(result2);
-  enemy.health = enemy.health - poisonAmount;
-  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
-  result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  if (enemy.health <= 0) {
-    disableButtons();
-    battleThemeSound.pause();
-    error.innerHTML = "Poisoned to death! - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    }
-  } else {
-    timeouts.push(setTimeout(playerPoison5, 3000, enemy));
-  }
-}
-function playerPoison5(enemy) {
-  var poisonAmount = Math.floor(Math.random() * 25);
-  redToWhite(result2);
-  enemy.health = enemy.health - poisonAmount;
-  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
-  result2.innerHTML = enemy.class + "<br />" + enemy.health;
-    if (enemy.health <= 0) {
-    disableButtons();
-    battleThemeSound.pause();
-    error.innerHTML = "Poisoned to death! - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    }
   }
 }
 function enemyPoison(enemy) {
-  var poisonAmount = Math.floor(Math.random() * 25);
-  redToWhite(result1);
-  enemy.health = enemy.health - poisonAmount;
-  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
-  result1.innerHTML = enemy.class + "<br />" + enemy.health;
-    if (enemy.health <= 0) {
-    disableButtons();
-    battleThemeSound.pause();
-    error.innerHTML = "Poisoned to death! - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    }
-  } else {
-    timeouts.push(setTimeout(enemyPoison2, 3000, enemy));
-  }
-}
-function enemyPoison2(enemy) {
-  var poisonAmount = Math.floor(Math.random() * 25);
-  redToWhite(result1);
-  enemy.health = enemy.health - poisonAmount;
-  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
-  result1.innerHTML = enemy.class + "<br />" + enemy.health;
-    if (enemy.health <= 0) {
-    disableButtons();
-    battleThemeSound.pause();
-    error.innerHTML = "Poisoned to death! - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    }
-  } else {
-    timeouts.push(setTimeout(enemyPoison3, 3000, enemy));
-  }
-}
-function enemyPoison3(enemy) {
-  var poisonAmount = Math.floor(Math.random() * 25);
-  redToWhite(result1);
-  enemy.health = enemy.health - poisonAmount;
-  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
-  result1.innerHTML = enemy.class + "<br />" + enemy.health;
-    if (enemy.health <= 0) {
-    disableButtons();
-    battleThemeSound.pause();
-    error.innerHTML = "Poisoned to death! - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    }
-  } else {
-    timeouts.push(setTimeout(enemyPoison4, 3000, enemy));
-  }
-}
-function enemyPoison4(enemy) {
-  var poisonAmount = Math.floor(Math.random() * 25);
-  redToWhite(result1);
-  enemy.health = enemy.health - poisonAmount;
-  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
-  result1.innerHTML = enemy.class + "<br />" + enemy.health;
-    if (enemy.health <= 0) {
-    disableButtons();
-    battleThemeSound.pause();
-    error.innerHTML = "Poisoned to death! - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    }
-  } else {
-    timeouts.push(setTimeout(enemyPoison5, 3000, enemy));
-  }
-}
-function enemyPoison5(enemy) {
   var poisonAmount = Math.floor(Math.random() * 25);
   redToWhite(result1);
   enemy.health = enemy.health - poisonAmount;
@@ -934,12 +798,12 @@ function enemyPoison5(enemy) {
 
 // clear all data
 function resetGame() {
-for (var i = 0; i < timeouts.length; i++) {
+  for (var i = 0; i < timeouts.length; i++) {
   clearTimeout(timeouts[i]);
-}
-swipeSound.play();
-battleThemeSound.pause(); 
-document.getElementById("player1choice").innerHTML = null;
+  }
+  swipeSound.play();
+  battleThemeSound.pause(); 
+  document.getElementById("player1choice").innerHTML = null;
 document.getElementById("player2choice").innerHTML = null;
 result1.innerHTML = "?";
 result2.innerHTML = "?";
