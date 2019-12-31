@@ -12,7 +12,7 @@ var dude1 = {
   "class": null,
   "health": null,
   "base_damage": null,
-  "regen": null  
+  "regen": null
 }
 var dude2 = {
   "type": "Computer",
@@ -24,7 +24,7 @@ var dude2 = {
 
 var attackSound = document.getElementById("attackSound");
 var healSound = document.getElementById("healSound");
-var selectSound = document.getElementById("selectSound"); 
+var selectSound = document.getElementById("selectSound");
 var swipeSound = document.getElementById("swipeSound");
 var fightSound = document.getElementById("fightSound");
 var karateSound = document.getElementById("karateSound");
@@ -78,7 +78,7 @@ var attackUI2 = document.getElementById("attackUI2");
 var player1Choices = document.getElementById("Player1Choices");
 var player2Choices = document.getElementById("Player2Choices");
 
-// disable/hide initial buttons 
+// disable/hide initial buttons
 calculate.disabled = true;
 selectButton1.style.display = "none";
 selectButton2.style.display = "none";
@@ -188,55 +188,55 @@ function disable2Enable1() {
 
 // on character icon click, display player selections and Select buttons
 function player1Type(player1) {
-  karateSound.play(); 
+  karateSound.play();
   document.getElementById("player1choice").innerHTML = player1;
   selectButton1.style.display = "inline-block";
 }
 function player2Type(player2) {
-  karateSound.play(); 
+  karateSound.play();
   document.getElementById("player2choice").innerHTML = player2;
   selectButton2.style.display = "inline-block";
 }
 
 // on select button click display player selections above Start Game button
-function displayRadioValue1() { 
+function displayRadioValue1() {
   var ele = document.getElementsByName('player1');
-  for(i = 0; i < ele.length; i++) { 
+  for(i = 0; i < ele.length; i++) {
     if(ele[i].checked) {
       var player1 = ele[i].value;
       window.player1 = ele[i].value;
       result1.innerHTML = player1;
       if (player1 === warrior) {
-      warriorSound.play(); 
+        warriorSound.play();
       } else if (player1 === knight) {
-      knightSound.play(); 
+        knightSound.play();
       } else if (player1 === wizard) {
-      wizardSound.play(); 
+        wizardSound.play();
       } else if (player1 === dragon) {
-      dragonSound.play(); 
+        dragonSound.play();
       }
     }
   }
-} 
-function displayRadioValue2() { 
-  var ele = document.getElementsByName('player2'); 
-  for(i = 0; i < ele.length; i++) { 
+}
+function displayRadioValue2() {
+  var ele = document.getElementsByName('player2');
+  for(i = 0; i < ele.length; i++) {
     if(ele[i].checked) {
       var player2 = ele[i].value;
       window.player2 = ele[i].value;
       result2.innerHTML = player2;
       if (player2 === warrior) {
-      warriorSound.play(); 
+        warriorSound.play();
       } else if (player2 === knight) {
-      knightSound.play(); 
+        knightSound.play();
       } else if (player2 === wizard) {
-      wizardSound.play(); 
+        wizardSound.play();
       } else if (player2 === dragon) {
-      dragonSound.play(); 
+        dragonSound.play();
       }
     }
   }
-} 
+}
 
 // set dude1 and dude2 values
 function validatePlayer(player,dudeNumber) {
@@ -291,83 +291,83 @@ function enableStart() {
 }
 
 function attackAnimation(attackIconNumber) {
-attackSound.play();
-attackIconNumber.style.transform = "rotate(360deg)";
-attackIconNumber.style.opacity = "1.0";
-setTimeout(attackAnimationFade, 1000, attackIconNumber); 
+  attackSound.play();
+  attackIconNumber.style.transform = "rotate(360deg)";
+  attackIconNumber.style.opacity = "1.0";
+  setTimeout(attackAnimationFade, 1000, attackIconNumber);
 }
 
 function attackAnimationFade(attackIconNumber) {
-attackIconNumber.style.transform = "rotate(-360deg)";
-attackIconNumber.style.opacity = "0.2";
+  attackIconNumber.style.transform = "rotate(-360deg)";
+  attackIconNumber.style.opacity = "0.2";
 }
 
 function healAnimation(healIconNumber) {
-healSound.play();
-healIconNumber.style.transform = "rotate(360deg)";
-healIconNumber.style.opacity = "1.0";
-setTimeout(healAnimationFade, 1000, healIconNumber);
+  healSound.play();
+  healIconNumber.style.transform = "rotate(360deg)";
+  healIconNumber.style.opacity = "1.0";
+  setTimeout(healAnimationFade, 1000, healIconNumber);
 }
 
 function healAnimationFade(healIconNumber) {
-healIconNumber.style.transform = "rotate(-360deg)";
-healIconNumber.style.opacity = "0.2";
+  healIconNumber.style.transform = "rotate(-360deg)";
+  healIconNumber.style.opacity = "0.2";
 }
 
 function critHitAnimation(critHitIconNumber) {
-critHitSound.play();
-critHitIconNumber.style.transform = "rotate(360deg)";
-critHitIconNumber.style.opacity = "1.0";
-setTimeout(critHitAnimationFade, 1000, critHitIconNumber);
+  critHitSound.play();
+  critHitIconNumber.style.transform = "rotate(360deg)";
+  critHitIconNumber.style.opacity = "1.0";
+  setTimeout(critHitAnimationFade, 1000, critHitIconNumber);
 }
 
 function critHitAnimationFade(critHitIconNumber) {
-critHitIconNumber.style.transform = "rotate(-360deg)";
-critHitIconNumber.style.opacity = "0.2";
+  critHitIconNumber.style.transform = "rotate(-360deg)";
+  critHitIconNumber.style.opacity = "0.2";
 }
 
 function poisonAnimation(poisonIconNumber) {
-poisonSound.play();
-poisonIconNumber.style.transform = "rotate(360deg)";
-poisonIconNumber.style.opacity = "1.0";
-setTimeout(poisonAnimationFade, 1000, poisonIconNumber); 
+  poisonSound.play();
+  poisonIconNumber.style.transform = "rotate(360deg)";
+  poisonIconNumber.style.opacity = "1.0";
+  setTimeout(poisonAnimationFade, 1000, poisonIconNumber);
 }
 
 function poisonAnimationFade(poisonIconNumber) {
-poisonIconNumber.style.transform = "rotate(-360deg)";
-poisonIconNumber.style.opacity = "0.2";
+  poisonIconNumber.style.transform = "rotate(-360deg)";
+  poisonIconNumber.style.opacity = "0.2";
 }
 
 function freezeAnimation(freezeIconNumber) {
-freezeSound.play();
-freezeIconNumber.style.transform = "rotate(360deg)";
-freezeIconNumber.style.opacity = "1.0";
-setTimeout(freezeAnimationFade, 1000, freezeIconNumber);
+  freezeSound.play();
+  freezeIconNumber.style.transform = "rotate(360deg)";
+  freezeIconNumber.style.opacity = "1.0";
+  setTimeout(freezeAnimationFade, 1000, freezeIconNumber);
 }
 
 function freezeAnimationFade(freezeIconNumber) {
-freezeIconNumber.style.transform = "rotate(-360deg)";
-freezeIconNumber.style.opacity = "0.2";
+  freezeIconNumber.style.transform = "rotate(-360deg)";
+  freezeIconNumber.style.opacity = "0.2";
 }
 
 function redToWhite(section) {
-section.style.color = "red";
-setTimeout(whiteText, 1000, section);
+  section.style.color = "red";
+  setTimeout(whiteText, 1000, section);
 }
 
 function greenToWhite(section) {
-section.style.color = "green";
-setTimeout(whiteText, 1000, section);
+  section.style.color = "green";
+  setTimeout(whiteText, 1000, section);
 }
 
 function whiteText(section) {
-section.style.color = "#ffffff"
+  section.style.color = "#ffffff"
 }
 
 // play start sound and wait 3 seconds to enable start game button
 function countdown() {
-fightSound.play();
-setTimeout(startGame, 3000) 
+  fightSound.play();
+  setTimeout(startGame, 3000)
 }
 
 // hide buttons and enable attack screen buttons
@@ -389,9 +389,9 @@ function startGame() {
   player2Choices.style.opacity = "0.2";
   selectButton1.disabled = true;
   selectButton2.disabled = true;
-  var inputs = document.getElementsByTagName("input"); 
-    for (var i = 0; i < inputs.length; i++) { 
-      inputs[i].disabled = true;
+  var inputs = document.getElementsByTagName("input");
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].disabled = true;
   }
   disable2Enable1();
 }
@@ -412,7 +412,7 @@ function attacker1(player, enemy) {
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   } else {
     setTimeout(player2Move, 3000);
@@ -433,14 +433,14 @@ function attacker2(player, enemy) {
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   }
 }
 
 // heal functions
 function healer1(player) {
-  healAnimation(healIcon1); 
+  healAnimation(healIcon1);
   var player_heal = heal_roll(player.regen);
   player.health = player.health + player_heal;
   element.innerHTML = ("<p>" + player.class + " regained " + player_heal + " health and now has " + player.health + " health. </p>");
@@ -450,7 +450,7 @@ function healer1(player) {
   disable1Enable2();
 }
 function healer2(enemy) {
-  healAnimation(healIcon2); 
+  healAnimation(healIcon2);
   var enemy_heal = heal_roll(enemy.regen);
   enemy.health = enemy.health + enemy_heal;
   element.innerHTML = ("<p>" + enemy.class + " regained " + enemy_heal + " health and now has " + enemy.health + " health. </p>");
@@ -460,7 +460,7 @@ function healer2(enemy) {
 }
 // crit hit functions
 function critHitter1(player, enemy) {
-  critHitAnimation(critHitIcon1); 
+  critHitAnimation(critHitIcon1);
   var player_attack = critHit_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
   player.health = player.health - 50;
@@ -476,7 +476,7 @@ function critHitter1(player, enemy) {
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   } else if (player.health <= 0) {
     disableButtons();
@@ -484,15 +484,15 @@ function critHitter1(player, enemy) {
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   }
-   else {
+  else {
     setTimeout(player2Move, 3000);
   }
 }
 function critHitter2(player, enemy) {
-  critHitAnimation(critHitIcon2); 
+  critHitAnimation(critHitIcon2);
   var enemy_attack = critHit_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
   enemy.health = enemy.health - 50;
@@ -508,7 +508,7 @@ function critHitter2(player, enemy) {
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   } else if (enemy.health <= 0) {
     disableButtons();
@@ -516,7 +516,7 @@ function critHitter2(player, enemy) {
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   }
 }
@@ -542,7 +542,7 @@ function poisoner1(player,enemy) {
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   } else if (player.health <= 0) {
     disableButtons();
@@ -550,11 +550,11 @@ function poisoner1(player,enemy) {
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   } else {
     setTimeout(player2Move, 3000);
-  } 
+  }
 }
 
 function poisoner2(player,enemy) {
@@ -578,7 +578,7 @@ function poisoner2(player,enemy) {
     error.innerHTML = enemy.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   } else if (enemy.health <= 0) {
     disableButtons();
@@ -586,10 +586,10 @@ function poisoner2(player,enemy) {
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
-  } 
-} 
+  }
+}
 
 function freezer1A(player,enemy) {
   var freeze;
@@ -604,33 +604,33 @@ function freezer1A(player,enemy) {
     result1.innerHTML = player.class + "<br />" + player.health;
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     redToWhite(result2);
-  if (enemy.health <= 0) {
-    disableButtons();
-    battleThemeSound.pause();
-    error.innerHTML = player.class + " Wins - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    }
-  } else {
-    setTimeout(freezer1B, 3000, dude1, dude2);
+    if (enemy.health <= 0) {
+      disableButtons();
+      battleThemeSound.pause();
+      error.innerHTML = player.class + " Wins - GAME OVER";
+      gameOverSound.play();
+      for (var i = 0; i < timeouts.length; i++) {
+        clearTimeout(timeouts[i]);
+      }
+    } else {
+      setTimeout(freezer1B, 3000, dude1, dude2);
     }
   } else {
     player.health = player.health - 100;
     redToWhite(result1);
     result1.innerHTML = player.class + "<br />" + player.health;
     element.innerHTML = ("<p>Freeze failed! " + player.class + " lost 100 health and now has " + player.health + " health.</p>");
-  if (player.health <= 0) {
-    disableButtons();
-    battleThemeSound.pause();
-    error.innerHTML = enemy.class + " Wins - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    }
-  } else {
-    disable1Enable2();
-    setTimeout(player2Move, 3000);
+    if (player.health <= 0) {
+      disableButtons();
+      battleThemeSound.pause();
+      error.innerHTML = enemy.class + " Wins - GAME OVER";
+      gameOverSound.play();
+      for (var i = 0; i < timeouts.length; i++) {
+        clearTimeout(timeouts[i]);
+      }
+    } else {
+      disable1Enable2();
+      setTimeout(player2Move, 3000);
     }
   }
 }
@@ -653,7 +653,7 @@ function freezer1B(player,enemy) {
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   } else {
     setTimeout(attacker1, 3000, dude1, dude2);
@@ -673,33 +673,33 @@ function freezer2A(player,enemy) {
     result1.innerHTML = player.class + "<br />" + player.health;
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     redToWhite(result1);
-  if (player.health <= 0) {
-    disableButtons();
-    battleThemeSound.pause();
-    error.innerHTML = enemy.class + " Wins - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    }
-  } else {
-    setTimeout(freezer2B, 3000, dude1, dude2);
+    if (player.health <= 0) {
+      disableButtons();
+      battleThemeSound.pause();
+      error.innerHTML = enemy.class + " Wins - GAME OVER";
+      gameOverSound.play();
+      for (var i = 0; i < timeouts.length; i++) {
+        clearTimeout(timeouts[i]);
+      }
+    } else {
+      setTimeout(freezer2B, 3000, dude1, dude2);
     }
   } else {
     enemy.health = enemy.health - 100;
     redToWhite(result2);
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     element.innerHTML = ("<p>Freeze failed! " + enemy.class + " lost 100 health and now has " + enemy.health + " health.</p>");
-  if (enemy.health <= 0) {
-    disableButtons();
-    error.innerHTML = player.class + " Wins - GAME OVER";
-    gameOverSound.play();
-    for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+    if (enemy.health <= 0) {
+      disableButtons();
+      error.innerHTML = player.class + " Wins - GAME OVER";
+      gameOverSound.play();
+      for (var i = 0; i < timeouts.length; i++) {
+        clearTimeout(timeouts[i]);
+      }
+    } else {
+      disable2Enable1();
     }
-  } else {
-    disable2Enable1();
-    }
-  } 
+  }
 }
 
 function freezer2B(player,enemy) {
@@ -720,7 +720,7 @@ function freezer2B(player,enemy) {
     error.innerHTML = player.class + " Wins - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   } else {
     setTimeout(autoAttack, 3000);
@@ -746,7 +746,7 @@ function autoFreeze() {
 
 var autoTurn = [autoAttack, autoHeal, autoCritHit, autoPoison, autoFreeze];
 function randomNumber(x) {
-	return Math.floor( Math.random() * x );
+  return Math.floor( Math.random() * x );
 }
 function player2Move() {
   autoTurn[ randomNumber(autoTurn.length) ]();
@@ -775,8 +775,8 @@ function playerPoison(enemy) {
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-    } 
+      clearTimeout(timeouts[i]);
+    }
   }
 }
 function enemyPoison(enemy) {
@@ -791,7 +791,7 @@ function enemyPoison(enemy) {
     error.innerHTML = "Poisoned to death! - GAME OVER";
     gameOverSound.play();
     for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
+      clearTimeout(timeouts[i]);
     }
   }
 }
@@ -799,48 +799,48 @@ function enemyPoison(enemy) {
 // clear all data
 function resetGame() {
   for (var i = 0; i < timeouts.length; i++) {
-  clearTimeout(timeouts[i]);
+    clearTimeout(timeouts[i]);
   }
   swipeSound.play();
-  battleThemeSound.pause(); 
+  battleThemeSound.pause();
   document.getElementById("player1choice").innerHTML = null;
-document.getElementById("player2choice").innerHTML = null;
-result1.innerHTML = "?";
-result2.innerHTML = "?";
-calculate.disabled = true;
-calculate.style.opacity = "0.4";
-calculate.style.color = "#ffffff";
-calculate.style.background = "green";
-calculate.style.cursor = "not-allowed";
-calculate.style.display = "inline-block";
-buttons.style.width = "100%";
-buttons.style.padding.left = "20px";
-buttons.style.padding.right = "20px";
-buttons.style.display = "block";
-enable.style.display = "inline-block";
-enable.disabled = false;
-enable.style.opacity = "1.0";
-enable.style.cursor = "pointer";
-toolTips.style.display = "none";
-var ele = document.getElementsByName("player1");
+  document.getElementById("player2choice").innerHTML = null;
+  result1.innerHTML = "?";
+  result2.innerHTML = "?";
+  calculate.disabled = true;
+  calculate.style.opacity = "0.4";
+  calculate.style.color = "#ffffff";
+  calculate.style.background = "green";
+  calculate.style.cursor = "not-allowed";
+  calculate.style.display = "inline-block";
+  buttons.style.width = "100%";
+  buttons.style.padding.left = "20px";
+  buttons.style.padding.right = "20px";
+  buttons.style.display = "block";
+  enable.style.display = "inline-block";
+  enable.disabled = false;
+  enable.style.opacity = "1.0";
+  enable.style.cursor = "pointer";
+  toolTips.style.display = "none";
+  var ele = document.getElementsByName("player1");
   for(var i=0;i<ele.length;i++)
-    ele[i].checked = false;
-    var ele = document.getElementsByName("player2");
+  ele[i].checked = false;
+  var ele = document.getElementsByName("player2");
   for(var i=0;i<ele.length;i++)
-    ele[i].checked = false;
-window.player1 = null;
-window.player2 = null;
-attackUI1.style.display = "none";
-attackUI2.style.display = "none";
-player1Choices.style.opacity = "1.0";
-player2Choices.style.opacity = "1.0";
-selectButton1.disabled = false;
-selectButton2.disabled = false;
-selectButton1.style.display = "none";
-selectButton2.style.display = "none";
-error.innerHTML = "";
-var inputs = document.getElementsByTagName("input"); 
-  for (var i = 0; i < inputs.length; i++) { 
+  ele[i].checked = false;
+  window.player1 = null;
+  window.player2 = null;
+  attackUI1.style.display = "none";
+  attackUI2.style.display = "none";
+  player1Choices.style.opacity = "1.0";
+  player2Choices.style.opacity = "1.0";
+  selectButton1.disabled = false;
+  selectButton2.disabled = false;
+  selectButton1.style.display = "none";
+  selectButton2.style.display = "none";
+  error.innerHTML = "";
+  var inputs = document.getElementsByTagName("input");
+  for (var i = 0; i < inputs.length; i++) {
     inputs[i].disabled = false;
   }
   for (var i = 0; i < timeouts.length; i++) {
