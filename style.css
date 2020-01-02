@@ -187,7 +187,7 @@ img {
 }
 /* outer */
 .outer {
-  background-image: url('https://d.newsweek.com/en/full/473198/game-thrones-battle-bastards-mashups.jpg');
+  background-image: url('images/outerBG.png');
   background-color: #000000;
   background-repeat: no-repeat;
   width: 100%;

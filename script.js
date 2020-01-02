@@ -39,6 +39,7 @@ var poisonSound = document.getElementById("poisonSound");
 var critHitSound = document.getElementById("critHitSound");
 var freezeSound = document.getElementById("freezeSound");
 var battleThemeSound = document.getElementById("battleThemeSound");
+battleThemeSound.volume = 0.3;
 
 var attackIcon1 = document.getElementById("attackIcon1");
 var attackIcon2 = document.getElementById("attackIcon2");
@@ -64,6 +65,7 @@ var calculate = document.getElementById("calculate");
 var selectButton1 = document.getElementById("selectButton1");
 var selectButton2 = document.getElementById("selectButton2");
 
+var outerBackground = document.getElementById("outerBackground");
 var element = document.getElementById("error");
 var error = document.getElementById("error");
 var buttons = document.getElementById("buttons");
@@ -370,8 +372,22 @@ function greenToWhite(section) {
   setTimeout(whiteText, 1000, section);
 }
 
+function yellowToWhite(section) {
+  section.style.color = "yellow";
+  setTimeout(whiteText, 1000, section);
+}
+
 function whiteText(section) {
   section.style.color = "#ffffff"
+}
+
+function backgroundToRed(section) {
+  section.style.backgroundColor = "red";
+  setTimeout(blackBackground, 2000, section);
+}
+
+function blackBackground(section) {
+  section.style.backgroundColor = "#000000"
 }
 
 // play start sound and wait 3 seconds to enable start game button
@@ -478,7 +494,7 @@ function critHitter1(player, enemy) {
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   redToWhite(result1);
-  redToWhite(result2);
+  yellowToWhite(result2);
   disable1Enable2();
   if (enemy.health <= 0) {
     disableButtons();
@@ -509,7 +525,7 @@ function critHitter2(player, enemy) {
   element.innerHTML = ("<p> Critical Hit! " + enemy.class + " did " + enemy_attack + " damage and " + player.class +  " has " + player.health + " health. " +  enemy.class + " lost 50 health and now has " + enemy.health + "</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  redToWhite(result1);
+  yellowToWhite(result1);
   redToWhite(result2);
   disable2Enable1();
   if (player.health <= 0) {
@@ -656,7 +672,6 @@ function freezer1B(player,enemy) {
   element.innerHTML = ("<p>" + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  blueToWhite(result2);
   if (enemy.health <= 0) {
     disableButtons();
     battleThemeSound.pause();
@@ -723,7 +738,6 @@ function freezer2B(player,enemy) {
   element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  blueToWhite(result1);
   if (player.health <= 0) {
     disableButtons();
     battleThemeSound.pause();
