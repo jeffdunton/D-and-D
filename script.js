@@ -350,6 +350,16 @@ function freezeAnimationFade(freezeIconNumber) {
   freezeIconNumber.style.opacity = "0.2";
 }
 
+function purpleToWhite(section) {
+  section.style.color = "purple";
+  setTimeout(whiteText, 1000, section);
+}
+
+function blueToWhite(section) {
+  section.style.color = "blue";
+  setTimeout(whiteText, 1000, section);
+}
+
 function redToWhite(section) {
   section.style.color = "red";
   setTimeout(whiteText, 1000, section);
@@ -528,8 +538,8 @@ function poisoner1(player,enemy) {
   element.innerHTML = ("<p>" + player.class + " poisoned " + enemy.class + ". " + enemy.class + " now has " + enemy.health + " health. " + player.class + " lost 75 health and now has " + player.health + " health.</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  redToWhite(result1);
-  redToWhite(result2);
+  purpleToWhite(result1);
+  purpleToWhite(result2);
   setTimeout(playerPoison, 3000, enemy);
   setTimeout(playerPoison, 6000, enemy);
   setTimeout(playerPoison, 9000, enemy);
@@ -564,8 +574,8 @@ function poisoner2(player,enemy) {
   element.innerHTML = ("<p>" + enemy.class + " poisoned " + player.class + ". " + player.class + " now has " + player.health + " health. " + enemy.class + " lost 75 health and now has " + enemy.health + " health.</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  redToWhite(result1);
-  redToWhite(result2);
+  purpleToWhite(result1);
+  purpleToWhite(result2);
   setTimeout(enemyPoison, 3000, player);
   setTimeout(enemyPoison, 6000, player);
   setTimeout(enemyPoison, 9000, player);
@@ -603,7 +613,7 @@ function freezer1A(player,enemy) {
     element.innerHTML = ("<p>Freeze successful! " + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
     result1.innerHTML = player.class + "<br />" + player.health;
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
-    redToWhite(result2);
+    blueToWhite(result2);
     if (enemy.health <= 0) {
       disableButtons();
       battleThemeSound.pause();
@@ -617,7 +627,7 @@ function freezer1A(player,enemy) {
     }
   } else {
     player.health = player.health - 100;
-    redToWhite(result1);
+    blueToWhite(result1);
     result1.innerHTML = player.class + "<br />" + player.health;
     element.innerHTML = ("<p>Freeze failed! " + player.class + " lost 100 health and now has " + player.health + " health.</p>");
     if (player.health <= 0) {
@@ -646,7 +656,7 @@ function freezer1B(player,enemy) {
   element.innerHTML = ("<p>" + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  redToWhite(result2);
+  blueToWhite(result2);
   if (enemy.health <= 0) {
     disableButtons();
     battleThemeSound.pause();
@@ -672,7 +682,7 @@ function freezer2A(player,enemy) {
     element.innerHTML = ("<p>Freeze successful! " + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
     result1.innerHTML = player.class + "<br />" + player.health;
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
-    redToWhite(result1);
+    blueToWhite(result1);
     if (player.health <= 0) {
       disableButtons();
       battleThemeSound.pause();
@@ -686,7 +696,7 @@ function freezer2A(player,enemy) {
     }
   } else {
     enemy.health = enemy.health - 100;
-    redToWhite(result2);
+    blueToWhite(result2);
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     element.innerHTML = ("<p>Freeze failed! " + enemy.class + " lost 100 health and now has " + enemy.health + " health.</p>");
     if (enemy.health <= 0) {
@@ -713,7 +723,7 @@ function freezer2B(player,enemy) {
   element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  redToWhite(result1);
+  blueToWhite(result1);
   if (player.health <= 0) {
     disableButtons();
     battleThemeSound.pause();
@@ -765,7 +775,7 @@ function critHit_roll(base_damage) {
 
 function playerPoison(enemy) {
   var poisonAmount = Math.floor(Math.random() * 25);
-  redToWhite(result2);
+  purpleToWhite(result2);
   enemy.health = enemy.health - poisonAmount;
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
@@ -781,7 +791,7 @@ function playerPoison(enemy) {
 }
 function enemyPoison(enemy) {
   var poisonAmount = Math.floor(Math.random() * 25);
-  redToWhite(result1);
+  purpleToWhite(result1);
   enemy.health = enemy.health - poisonAmount;
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
