@@ -716,6 +716,7 @@ function freezer2A(player,enemy) {
     element.innerHTML = ("<p>Freeze failed! " + enemy.class + " lost 100 health and now has " + enemy.health + " health.</p>");
     if (enemy.health <= 0) {
       disableButtons();
+      battleThemeSound.pause();
       error.innerHTML = player.class + " Wins - GAME OVER";
       gameOverSound.play();
       for (var i = 0; i < timeouts.length; i++) {
