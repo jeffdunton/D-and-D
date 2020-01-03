@@ -3,6 +3,7 @@ const warrior = "Warrior<br>HP: 1000<br>Base Damage: 75<br>Regen: 25";
 const knight = "Knight<br>HP: 1250<br>Base Damage: 50<br>Regen: 10";
 const wizard = "Wizard<br>HP: 750<br>Base Damage: 25<br>Regen: 75";
 const dragon = "Dragon<br>HP: 1350<br>Base Damage: 25<br>Regen: 25";
+const ogre = "Ogre<br>HP: 1500<br>Base Damage: 50<br>Regen: 0";
 
 var player1 = null;
 var player2 = null;
@@ -34,6 +35,7 @@ var wizardSound = document.getElementById("wizardSound");
 var dragonSound = document.getElementById("dragonSound");
 var warriorSound = document.getElementById("warriorSound");
 var knightSound = document.getElementById("knightSound");
+var monsterSound = document.getElementById("monsterSound");
 var readySound = document.getElementById("readySound");
 var poisonSound = document.getElementById("poisonSound");
 var critHitSound = document.getElementById("critHitSound");
@@ -216,6 +218,8 @@ function displayRadioValue1() {
         wizardSound.play();
       } else if (player1 === dragon) {
         dragonSound.play();
+      } else if (player1 === ogre) {
+        monsterSound.play();
       }
     }
   }
@@ -235,6 +239,8 @@ function displayRadioValue2() {
         wizardSound.play();
       } else if (player2 === dragon) {
         dragonSound.play();
+      } else if (player2 === ogre) {
+        monsterSound.play();
       }
     }
   }
@@ -262,6 +268,11 @@ function validatePlayer(player,dudeNumber) {
     dudeNumber.health = 1350;
     dudeNumber.base_damage = 25;
     dudeNumber.regen = 25;
+  } else if (player === ogre) {
+    dudeNumber.class = "Ogre";
+    dudeNumber.health = 1500;
+    dudeNumber.base_damage = 50;
+    dudeNumber.regen = 0;
   }
 }
 
@@ -822,9 +833,6 @@ function enemyPoison(enemy) {
 
 // clear all data
 function resetGame() {
-  for (var i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-  }
   swipeSound.play();
   battleThemeSound.pause();
   document.getElementById("player1choice").innerHTML = null;

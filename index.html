@@ -21,6 +21,7 @@
   <audio id="poisonSound"><source src="sounds/poisonSound.flac" type="audio/flac"></audio>
   <audio id="critHitSound"><source src="sounds/critHitSound.wav" type="audio/wav"></audio>
   <audio id="freezeSound"><source src="sounds/freezeSound.wav" type="audio/wav"></audio>
+  <audio id="monsterSound"><source src="sounds/monsterSound.wav" type="audio/wav"></audio>
   <audio loop id="battleThemeSound"><source src="sounds/battleThemeSound.wav" type="audio/wav"></audio>
 </head>
 <body id="outerBackground" class="outer">
@@ -42,6 +43,8 @@
                 <label for="player1-3"><img src="https://static.thenounproject.com/png/657180-200.png"></label>
                 <input onclick="player1Type(this.value)" type="radio" name="player1" id="player1-4" value="Dragon<br>HP: 1350<br>Base Damage: 25<br>Regen: 25">
                 <label for="player1-4"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dragon-18-548351.png"></label>
+                <input onclick="player1Type(this.value)" type="radio" name="player1" id="player1-5" value="Ogre<br>HP: 1500<br>Base Damage: 50<br>Regen: 0">
+                <label for="player1-5"><img src="images/monster.png"></label>
               </div>
             </div>
           </div>
@@ -62,6 +65,8 @@
                 <label for="player2-3"><img src="https://static.thenounproject.com/png/657180-200.png"></label>
                 <input onclick="player2Type(this.value)" type="radio" name="player2" id="player2-4" value="Dragon<br>HP: 1350<br>Base Damage: 25<br>Regen: 25">
                 <label for="player2-4"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dragon-18-548351.png"></label>
+                <input onclick="player2Type(this.value)" type="radio" name="player2" id="player2-5" value="Ogre<br>HP: 1500<br>Base Damage: 50<br>Regen: 0">
+                <label for="player2-5"><img src="images/monster.png"></label>
               </div>
             </div>
           </div>
