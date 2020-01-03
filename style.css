@@ -91,6 +91,12 @@ h1 {
   color: #ffffff;
   padding-bottom: 5px;
 }
+.largeHeading {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 28px;
+  color: #ffffff;
+  padding: 10px 0px;
+}
 .subheading {
   font-size: 12px;
 }
@@ -391,7 +397,7 @@ a {
   color: #ffffff;
   border: none;
   border-radius: 5px;
-  padding: 10px 0;
+  padding: 7px 10px;
   cursor: pointer;
   margin-top: 10px;
   margin-bottom: 10px;
