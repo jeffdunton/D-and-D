@@ -194,6 +194,7 @@ img {
   border: 0px;
   margin: 0;
   padding: 0px;
+  transition: all 1s linear;
 }
 .outer-margin {
 margin-top: 20px;

@@ -354,40 +354,37 @@ function freezeAnimationFade(freezeIconNumber) {
 
 function purpleToWhite(section) {
   section.style.color = "purple";
+  outerBackground.style.backgroundColor = "purple"
   setTimeout(whiteText, 1000, section);
 }
 
 function blueToWhite(section) {
   section.style.color = "blue";
+  outerBackground.style.backgroundColor = "blue"
   setTimeout(whiteText, 1000, section);
 }
 
 function redToWhite(section) {
   section.style.color = "red";
+  outerBackground.style.backgroundColor = "red"
   setTimeout(whiteText, 1000, section);
 }
 
 function greenToWhite(section) {
   section.style.color = "green";
+  outerBackground.style.backgroundColor = "green"
   setTimeout(whiteText, 1000, section);
 }
 
 function yellowToWhite(section) {
   section.style.color = "yellow";
+  outerBackground.style.backgroundColor = "yellow"
   setTimeout(whiteText, 1000, section);
 }
 
 function whiteText(section) {
   section.style.color = "#ffffff"
-}
-
-function backgroundToRed(section) {
-  section.style.backgroundColor = "red";
-  setTimeout(blackBackground, 2000, section);
-}
-
-function blackBackground(section) {
-  section.style.backgroundColor = "#000000"
+  outerBackground.style.backgroundColor = "#000000"
 }
 
 // play start sound and wait 3 seconds to enable start game button
@@ -556,11 +553,11 @@ function poisoner1(player,enemy) {
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   purpleToWhite(result1);
   purpleToWhite(result2);
-  setTimeout(playerPoison, 3000, enemy);
-  setTimeout(playerPoison, 6000, enemy);
-  setTimeout(playerPoison, 9000, enemy);
-  setTimeout(playerPoison, 12000, enemy);
-  setTimeout(playerPoison, 15000, enemy);
+  timeouts.push(setTimeout(playerPoison, 3000, enemy));
+  timeouts.push(setTimeout(playerPoison, 6000, enemy));
+  timeouts.push(setTimeout(playerPoison, 9000, enemy));
+  timeouts.push(setTimeout(playerPoison, 12000, enemy));
+  timeouts.push(setTimeout(playerPoison, 15000, enemy));
   disable1Enable2();
   if (enemy.health <= 0) {
     disableButtons();
@@ -592,11 +589,11 @@ function poisoner2(player,enemy) {
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   purpleToWhite(result1);
   purpleToWhite(result2);
-  setTimeout(enemyPoison, 3000, player);
-  setTimeout(enemyPoison, 6000, player);
-  setTimeout(enemyPoison, 9000, player);
-  setTimeout(enemyPoison, 12000, player);
-  setTimeout(enemyPoison, 15000, player);
+  timeouts.push(setTimeout(enemyPoison, 3000, player));
+  timeouts.push(setTimeout(enemyPoison, 6000, player));
+  timeouts.push(setTimeout(enemyPoison, 9000, player));
+  timeouts.push(setTimeout(enemyPoison, 12000, player));
+  timeouts.push(setTimeout(enemyPoison, 15000, player));
   disable2Enable1();
   if (player.health <= 0) {
     disableButtons();
@@ -666,6 +663,7 @@ function freezer1B(player,enemy) {
   freezeAnimation(freezeIcon1);
   var roll = randomNumber(4);
   attackAnimation(attackIcon1);
+  redToWhite(result2);
   disableButtons();
   var player_attack = attack_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
@@ -734,6 +732,7 @@ function freezer2B(player,enemy) {
   disableButtons();
   var roll = randomNumber(4);
   attackAnimation(attackIcon2);
+  redToWhite(result2);
   var enemy_attack = attack_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
   element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
@@ -871,4 +870,5 @@ function resetGame() {
   for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
   }
+  var timeouts = [];
 }
