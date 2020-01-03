@@ -878,5 +878,5 @@ function resetGame() {
   for (var i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
   }
-  var timeouts = [];
+  timeouts = [];
 }
