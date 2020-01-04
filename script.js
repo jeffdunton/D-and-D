@@ -205,7 +205,7 @@ function player1Type(player1) {
   } else if (player1 === ogre) {
       monsterSound.play();
   } else if (player1 === princess) {
-      princess.play();
+      princessSound.play();
   }
 }
 function player2Type(player2) {
@@ -221,8 +221,8 @@ function player2Type(player2) {
       dragonSound.play();
   } else if (player2 === ogre) {
       monsterSound.play();
-  } else if (player1 === princess) {
-      princess.play();
+  } else if (player2 === princess) {
+      princessSound.play();
   }
 }
 
@@ -837,6 +837,12 @@ function resetGame() {
   enable.style.opacity = "1.0";
   enable.style.cursor = "pointer";
   toolTips.style.display = "none";
+  var ele = document.getElementsByName("player1");
+  for(var i=0;i<ele.length;i++)
+    ele[i].checked = false;
+  var ele = document.getElementsByName("player2");
+  for(var i=0;i<ele.length;i++)
+    ele[i].checked = false;
   window.player1 = null;
   window.player2 = null;
   attackUI1.style.display = "none";
