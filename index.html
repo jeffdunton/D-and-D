@@ -22,16 +22,18 @@
   <audio id="critHitSound"><source src="sounds/critHitSound.wav" type="audio/wav"></audio>
   <audio id="freezeSound"><source src="sounds/freezeSound.wav" type="audio/wav"></audio>
   <audio id="monsterSound"><source src="sounds/monsterSound.wav" type="audio/wav"></audio>
+  <audio id="princessSound"><source src="sounds/princessSound.mp3" type="audio/mp3"></audio>
   <audio loop id="battleThemeSound"><source src="sounds/battleThemeSound.wav" type="audio/wav"></audio>
 </head>
 <body id="outerBackground" class="outer">
 
-  <div class="container flex-center outer-margin">
-    <div class="ver-padding inner-body1 main-content">
-      
-      <div id="Player1Choices" class="container flex-between" style="min-height: 170px;">
-        <div class="hor-padding"><span class="heading">Player</span><br /><div id="player1choice"></div><div id="health"></div><button id="selectButton1" class="select-button" onclick="displayRadioValue1()">Select</button></div>
-        <div class="hor-padding">
+<div class="container flex-center outer-margin">
+  <div class="ver-padding inner-body1 main-content">
+    <div class="container flex-center items-center">
+      <div class="center-text fifty-percent-col">
+        <div id="heading1" class="hor-padding heading">Player</div>
+          <div id="Player1Choices" class="container flex-between">
+          <div class="hor-padding">
           <div class="select">
             <div class="radio radio--color">
               <div class="radio-content">
@@ -45,14 +47,20 @@
                 <label for="player1-4"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dragon-18-548351.png"></label>
                 <input onclick="player1Type(this.value)" type="radio" name="player1" id="player1-5" value="Ogre<br>HP: 1500<br>Base Damage: 50<br>Regen: 0">
                 <label for="player1-5"><img src="images/monster.png"></label>
+                <input onclick="player1Type(this.value)" type="radio" name="player1" id="player1-6" value="Princess<br>HP: 500<br>Base Damage: 10<br>Regen: 100">
+                <label for="player1-6"><img src="images/princessIcon.png"></label>
               </div>
             </div>
           </div>
+          </div>
+          </div>
+
+
+
         </div>
-      </div>
-      
-      <div id="Player2Choices" class="container flex-between ver-padding" style="min-height: 170px;">
-        <div class="hor-padding"><span class="heading">Computer</span><br /><div id="player2choice"></div><button id="selectButton2" class="select-button" onclick="displayRadioValue2()">Select</button></div>
+        <div class="center-text fifty-percent-col">
+      <div id="heading2" class="heading hor-padding">Computer</div>
+      <div id="Player2Choices" class="container flex-between">
         <div class="hor-padding">
           <div class="select">
             <div class="radio radio--color">
@@ -67,13 +75,22 @@
                 <label for="player2-4"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dragon-18-548351.png"></label>
                 <input onclick="player2Type(this.value)" type="radio" name="player2" id="player2-5" value="Ogre<br>HP: 1500<br>Base Damage: 50<br>Regen: 0">
                 <label for="player2-5"><img src="images/monster.png"></label>
+                <input onclick="player2Type(this.value)" type="radio" name="player2" id="player2-6" value="Princess<br>HP: 500<br>Base Damage: 10<br>Regen: 100">
+                <label for="player2-6"><img src="images/princessIcon.png"></label>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+        </div>
+      </div>
+
+
+
       
-      <div class="container flex-center items-center" style="min-height: 125px;">
+      <div class="container flex-center items-center" style="min-height: 150px;">
         <div id="result1" class="heading center-text fifty-percent-col">?</div>
         <div class="center-text hor-padding">
           <span class="largeHeading">VS</span>

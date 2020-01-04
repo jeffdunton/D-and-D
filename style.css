@@ -278,7 +278,7 @@ margin-top: 20px;
 
 .main-content {
   padding: 25px;
-  max-width: 900px;
+  max-width: 733px;
   width: 100%
 }
 
@@ -473,6 +473,7 @@ body {
       .select .radio .radio-content {
          display: inline-block;
          vertical-align: middle;
+           text-align: center;
       }
       
       .select .radio input {

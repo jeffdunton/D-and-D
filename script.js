@@ -1,9 +1,10 @@
-// initilize player/sound variables
+// initialize player/sound variables
 const warrior = "Warrior<br>HP: 1000<br>Base Damage: 75<br>Regen: 25";
 const knight = "Knight<br>HP: 1250<br>Base Damage: 50<br>Regen: 10";
 const wizard = "Wizard<br>HP: 750<br>Base Damage: 25<br>Regen: 75";
 const dragon = "Dragon<br>HP: 1350<br>Base Damage: 25<br>Regen: 25";
 const ogre = "Ogre<br>HP: 1500<br>Base Damage: 50<br>Regen: 0";
+const princess = "Princess<br>HP: 500<br>Base Damage: 10<br>Regen: 100";
 
 var player1 = null;
 var player2 = null;
@@ -36,6 +37,7 @@ var dragonSound = document.getElementById("dragonSound");
 var warriorSound = document.getElementById("warriorSound");
 var knightSound = document.getElementById("knightSound");
 var monsterSound = document.getElementById("monsterSound");
+var princessSound = document.getElementById("princessSound");
 var readySound = document.getElementById("readySound");
 var poisonSound = document.getElementById("poisonSound");
 var critHitSound = document.getElementById("critHitSound");
@@ -64,8 +66,6 @@ var freeze1 = document.getElementById("freeze1");
 var freeze2 = document.getElementById("freeze2");
 
 var calculate = document.getElementById("calculate");
-var selectButton1 = document.getElementById("selectButton1");
-var selectButton2 = document.getElementById("selectButton2");
 
 var outerBackground = document.getElementById("outerBackground");
 var element = document.getElementById("error");
@@ -81,11 +81,11 @@ var attackUI1 = document.getElementById("attackUI1");
 var attackUI2 = document.getElementById("attackUI2");
 var player1Choices = document.getElementById("Player1Choices");
 var player2Choices = document.getElementById("Player2Choices");
+var heading1 = document.getElementById('heading1');
+var heading2 = document.getElementById('heading2');
 
-// disable/hide initial buttons
+// disable start button
 calculate.disabled = true;
-selectButton1.style.display = "none";
-selectButton2.style.display = "none";
 
 // store active timers so that they can be stopped when needed
 var timeouts = [];
@@ -190,59 +190,39 @@ function disable2Enable1() {
   freeze2.style.cursor = "not-allowed";
 }
 
-// on character icon click, display player selections and Select buttons
+// on character icon click, display player selections
 function player1Type(player1) {
-  karateSound.play();
-  document.getElementById("player1choice").innerHTML = player1;
-  selectButton1.style.display = "inline-block";
-}
-function player2Type(player2) {
-  karateSound.play();
-  document.getElementById("player2choice").innerHTML = player2;
-  selectButton2.style.display = "inline-block";
-}
-
-// on select button click display player selections above Start Game button
-function displayRadioValue1() {
-  var ele = document.getElementsByName('player1');
-  for(i = 0; i < ele.length; i++) {
-    if(ele[i].checked) {
-      var player1 = ele[i].value;
-      window.player1 = ele[i].value;
-      result1.innerHTML = player1;
-      if (player1 === warrior) {
-        warriorSound.play();
-      } else if (player1 === knight) {
-        knightSound.play();
-      } else if (player1 === wizard) {
-        wizardSound.play();
-      } else if (player1 === dragon) {
-        dragonSound.play();
-      } else if (player1 === ogre) {
-        monsterSound.play();
-      }
-    }
+  result1.innerHTML = player1;
+  window.player1 = result1.innerHTML;
+  if (player1 === warrior) {
+      warriorSound.play();
+  } else if (player1 === knight) {
+      knightSound.play();
+  } else if (player1 === wizard) {
+      wizardSound.play();
+  } else if (player1 === dragon) {
+      dragonSound.play();
+  } else if (player1 === ogre) {
+      monsterSound.play();
+  } else if (player1 === princess) {
+      princess.play();
   }
 }
-function displayRadioValue2() {
-  var ele = document.getElementsByName('player2');
-  for(i = 0; i < ele.length; i++) {
-    if(ele[i].checked) {
-      var player2 = ele[i].value;
-      window.player2 = ele[i].value;
-      result2.innerHTML = player2;
-      if (player2 === warrior) {
-        warriorSound.play();
-      } else if (player2 === knight) {
-        knightSound.play();
-      } else if (player2 === wizard) {
-        wizardSound.play();
-      } else if (player2 === dragon) {
-        dragonSound.play();
-      } else if (player2 === ogre) {
-        monsterSound.play();
-      }
-    }
+function player2Type(player2) {
+  result2.innerHTML = player2;
+  window.player2 = result2.innerHTML;
+  if (player2 === warrior) {
+      warriorSound.play();
+  } else if (player2 === knight) {
+      knightSound.play();
+  } else if (player2 === wizard) {
+      wizardSound.play();
+  } else if (player2 === dragon) {
+      dragonSound.play();
+  } else if (player2 === ogre) {
+      monsterSound.play();
+  } else if (player1 === princess) {
+      princess.play();
   }
 }
 
@@ -273,6 +253,11 @@ function validatePlayer(player,dudeNumber) {
     dudeNumber.health = 1500;
     dudeNumber.base_damage = 50;
     dudeNumber.regen = 0;
+  } else if (player === princess) {
+    dudeNumber.class = "Princess";
+    dudeNumber.health = 500;
+    dudeNumber.base_damage = 10;
+    dudeNumber.regen = 100;
   }
 }
 
@@ -292,10 +277,10 @@ function enableStart() {
     document.getElementById("error").innerHTML = ""
     readySound.play();
   } else if ((player1 === null) && (player2 != null)) {
-    error.innerHTML = "You need to choose a character for player 1!";
+    error.innerHTML = "You need to choose a character for the Player!";
     errorSound.play();
   } else if ((player1 != null) && (player2 === null)) {
-    error.innerHTML = "You need to choose a character for player 2!";
+    error.innerHTML = "You need to choose a character for the Computer!";
     errorSound.play();
   } else if ((player1 === null) && (player2 === null)) {
     error.innerHTML = "You need to choose your characters!";
@@ -421,8 +406,8 @@ function startGame() {
   attackUI2.style.width = "50%";
   player1Choices.style.opacity = "0.2";
   player2Choices.style.opacity = "0.2";
-  selectButton1.disabled = true;
-  selectButton2.disabled = true;
+  heading1.style.opacity = "0.2";
+  heading2.style.opacity = "0.2";
   var inputs = document.getElementsByTagName("input");
   for (var i = 0; i < inputs.length; i++) {
     inputs[i].disabled = true;
@@ -835,8 +820,6 @@ function enemyPoison(enemy) {
 function resetGame() {
   swipeSound.play();
   battleThemeSound.pause();
-  document.getElementById("player1choice").innerHTML = null;
-  document.getElementById("player2choice").innerHTML = null;
   result1.innerHTML = "?";
   result2.innerHTML = "?";
   calculate.disabled = true;
@@ -854,22 +837,14 @@ function resetGame() {
   enable.style.opacity = "1.0";
   enable.style.cursor = "pointer";
   toolTips.style.display = "none";
-  var ele = document.getElementsByName("player1");
-  for(var i=0;i<ele.length;i++)
-  ele[i].checked = false;
-  var ele = document.getElementsByName("player2");
-  for(var i=0;i<ele.length;i++)
-  ele[i].checked = false;
   window.player1 = null;
   window.player2 = null;
   attackUI1.style.display = "none";
   attackUI2.style.display = "none";
   player1Choices.style.opacity = "1.0";
   player2Choices.style.opacity = "1.0";
-  selectButton1.disabled = false;
-  selectButton2.disabled = false;
-  selectButton1.style.display = "none";
-  selectButton2.style.display = "none";
+  heading1.style.opacity = "1.0";
+  heading2.style.opacity = "1.0";
   error.innerHTML = "";
   var inputs = document.getElementsByTagName("input");
   for (var i = 0; i < inputs.length; i++) {
