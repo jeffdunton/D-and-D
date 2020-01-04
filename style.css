@@ -1,31 +1,6 @@
 
 @media only screen and (max-width: 599px) {
-  .five-percent-col,
-  .ten-percent-col,
-  .fifteen-percent-col,
-  .twenty-percent-col,
-  .twenty-five-percent-col,
-  .thirty-percent-col,
-  .thirty-five-percent-col,
-  .fourty-percent-col,
-  .fourty-five-percent-col,
-  .fifty-percent-col,
-  .fifty-five-percent-col,
-  .sixty-percent-col,
-  .sixty-five-percent-col,
-  .seventy-percent-col,
-  .seventy-five-percent-col,
-  .eighty-percent-col,
-  .eighty-five-percent-col,
-  .ninety-percent-col,
-  .ninety-five-percent-col,
-  .container,
-  .small-width,
-  .med-width,
-  .large-width,
-  .xlarge-width,
-  .main-content,
-  .sidebar {
+  .main-content, {
     text-align: center !important;
     display: block !important;
     width: 100% !important;
@@ -328,6 +303,8 @@ a {
   border-radius: 5px;
   padding: 10px 0;
   margin-top: 6px;
+  margin-left: 5px;
+  margin-right: 5px;
   cursor: pointer;
 }
 .beginGame:hover {
@@ -431,10 +408,12 @@ body {
   display: inline-block;
   vertical-align: middle;
   cursor: pointer;
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: 100px;
   border: 1px solid transparent;
-  margin: 2px;
+  margin-bottom: 5px;
+  margin-left: 1px;
+  margin-right: 1px;
   overflow: hidden;
   background-color: rgba(255,255,255, 0.5);
 }

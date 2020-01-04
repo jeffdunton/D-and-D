@@ -275,6 +275,10 @@ function enableStart() {
     enable.style.opacity = "0.2";
     enable.style.cursor = "not-allowed";
     document.getElementById("error").innerHTML = ""
+    var inputs = document.getElementsByTagName("input");
+    for (var i = 0; i < inputs.length; i++) {
+    inputs[i].disabled = true;
+  }
     readySound.play();
   } else if ((player1 === null) && (player2 != null)) {
     error.innerHTML = "You need to choose a character for the Player!";
@@ -408,10 +412,6 @@ function startGame() {
   player2Choices.style.opacity = "0.2";
   heading1.style.opacity = "0.2";
   heading2.style.opacity = "0.2";
-  var inputs = document.getElementsByTagName("input");
-  for (var i = 0; i < inputs.length; i++) {
-    inputs[i].disabled = true;
-  }
   disable2Enable1();
 }
 
