@@ -3,21 +3,15 @@
   .main-content, {
     text-align: center !important;
     display: block !important;
-    width: 100% !important;
+    min-width: 490px !important;
     max-width: 100% !important;
     margin: 0px !important;
   }
   .main-content {
-    padding: 25px !important;
+    padding: 10px !important;
   }
   img {
     max-width: 100% !important;
-  }
-  .header {
-    position: static !important;
-  }
-  .footer {
-    position: static !important;
   }
   .mobile-center {
     text-align: center !important;
@@ -27,9 +21,6 @@
   }
   .mobile-display {
     display: inline-block !important;
-  }
-  #tipCalculate {
-    max-width: 100% !important;
   }
   .hor-padding {
     padding-left: 0px !important;
@@ -156,9 +147,10 @@ img {
 }
 /* outer */
 .outer {
-  background-image: url('images/outerBG.png');
-  background-color: #000000;
+  background-image: url('images/outerBG_v2.png');
+  background-color: #c4a680;
   background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
   border: 0px;
   margin: 0;
@@ -282,24 +274,22 @@ a {
   color: #EA7E50;
 }
 .startGame {
-  background-color: #415F7A;
+  background-color: #000000;
   opacity: 0.4;
   width: 300px;
   font-size: 18px;
   color: #ffffff;
-  border: none;
   border-radius: 5px;
   padding: 10px 0;
   margin-top: 6px;
   cursor: not-allowed;
 }
 .beginGame {
-  background-color: #415F7A;
+  background-color: #000000;
   opacity: 1.0;
   width: 300px;
   font-size: 18px;
   color: #ffffff;
-  border: none;
   border-radius: 5px;
   padding: 10px 0;
   margin-top: 6px;
@@ -307,15 +297,16 @@ a {
   margin-right: 5px;
   cursor: pointer;
 }
-.beginGame:hover {
-  background-color: green ;
+.beginGame:hover,
+.startGame:hover {
+  background-color: #cccccc ;
+  color: #000000;
 }
 .resetGame {
-  background-color: #415F7A;
+  background-color: #000000;
   width: 300px;
   font-size: 18px;
   color: #ffffff;
-  border: none;
   border-radius: 5px;
   padding: 10px 0;
   margin-top: 6px;
@@ -323,21 +314,6 @@ a {
 }
 .resetGame:hover {
   background-color: #A50308 ;
-}
-.select-button {
-  background-color: #415F7A;
-  width: 100px;
-  font-size: 18px;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  padding: 7px 10px;
-  cursor: pointer;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.select-button:hover {
-  background-color: green;
 }
 body {
   animation: fadeIn 1.5s linear;
@@ -415,7 +391,7 @@ body {
   margin-left: 1px;
   margin-right: 1px;
   overflow: hidden;
-  background-color: rgba(255,255,255, 0.5);
+  background-color: rgba(195, 165, 123, 0.3);
 }
 .select .radio label.size {
   display: inline-block;
@@ -432,13 +408,13 @@ body {
   background-color: rgba(255,255,255, 1.0);
 }
 .select .radio input[type="radio"]:checked + label {
-  border: 1px solid #000000;
-  outline: 3px solid green;
+  border: 1px solid #ffffff;
+  outline: 3px solid #000000;
   background-color: rgba(255,255,255, 1.0);
 }
 .select .radio input[type="radio"]:focus + label {
-  border: 1px solid #000000;
-  outline: 3px solid green;
+  border: 1px solid #ffffff;
+  outline: 3px solid #000000;
   background-color: rgba(255,255,255, 1.0);
 }
 #error {

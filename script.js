@@ -268,8 +268,6 @@ function enableStart() {
     validatePlayer(player2,dude2);
     calculate.disabled = false;
     calculate.style.opacity = "1.0";
-    calculate.style.color = "#ffffff";
-    calculate.style.background = "green";
     calculate.style.cursor = "pointer";
     enable.disabled = true;
     enable.style.opacity = "0.2";
@@ -384,7 +382,7 @@ function yellowToWhite(section) {
 
 function whiteText(section) {
   section.style.color = "#ffffff"
-  outerBackground.style.backgroundColor = "#000000"
+  outerBackground.style.backgroundColor = "#c4a680"
 }
 
 // play start sound and wait 3 seconds to enable start game button
@@ -824,8 +822,6 @@ function resetGame() {
   result2.innerHTML = "?";
   calculate.disabled = true;
   calculate.style.opacity = "0.4";
-  calculate.style.color = "#ffffff";
-  calculate.style.background = "green";
   calculate.style.cursor = "not-allowed";
   calculate.style.display = "inline-block";
   buttons.style.width = "100%";
