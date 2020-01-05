@@ -25,8 +25,8 @@
   <audio id="princessSound"><source src="sounds/princessSound.mp3" type="audio/mp3"></audio>
   <audio loop id="battleThemeSound"><source src="sounds/battleThemeSound.wav" type="audio/wav"></audio>
 </head>
-<body id="outerBackground" class="outer">
-  <div class="container flex-center outer-margin">
+<body id="outerBackground" class="outer" onLoad="overlayFade()">
+  <div id="overlay" class="container flex-center overlay">
     <div class="ver-padding inner-body1 main-content">
       <div class="container flex-center items-center">
         <div class="center-text fifty-percent-col">

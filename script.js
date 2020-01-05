@@ -83,6 +83,12 @@ var player1Choices = document.getElementById("Player1Choices");
 var player2Choices = document.getElementById("Player2Choices");
 var heading1 = document.getElementById('heading1');
 var heading2 = document.getElementById('heading2');
+var overlay = document.getElementById('overlay');
+
+// fade the background onto the screen
+function overlayFade() {
+  overlay.style.backgroundColor = "transparent";
+}
 
 // disable start button
 calculate.disabled = true;
@@ -358,13 +364,13 @@ function purpleToWhite(section) {
 
 function blueToWhite(section) {
   section.style.color = "blue";
-  outerBackground.style.backgroundColor = "#140E4D"
+  outerBackground.style.backgroundColor = "#142A47"
   setTimeout(whiteText, 1000, section);
 }
 
 function redToWhite(section) {
   section.style.color = "red";
-  outerBackground.style.backgroundColor = "red"
+  outerBackground.style.backgroundColor = "#48110B"
   setTimeout(whiteText, 1000, section);
 }
 
@@ -376,7 +382,7 @@ function greenToWhite(section) {
 
 function yellowToWhite(section) {
   section.style.color = "yellow";
-  outerBackground.style.backgroundColor = "yellow"
+  outerBackground.style.backgroundColor = "#686329"
   setTimeout(whiteText, 1000, section);
 }
 
