@@ -422,7 +422,7 @@ body {
 }
 #error {
   min-height: 45px;
-  color: red;
+  color:#ff5656;
 }
 buttons {
   transition: all 1s linear;

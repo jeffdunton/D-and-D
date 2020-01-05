@@ -352,13 +352,13 @@ function freezeAnimationFade(freezeIconNumber) {
 
 function purpleToWhite(section) {
   section.style.color = "purple";
-  outerBackground.style.backgroundColor = "purple"
+  outerBackground.style.backgroundColor = "#52163B"
   setTimeout(whiteText, 1000, section);
 }
 
 function blueToWhite(section) {
   section.style.color = "blue";
-  outerBackground.style.backgroundColor = "blue"
+  outerBackground.style.backgroundColor = "#140E4D"
   setTimeout(whiteText, 1000, section);
 }
 
@@ -370,7 +370,7 @@ function redToWhite(section) {
 
 function greenToWhite(section) {
   section.style.color = "green";
-  outerBackground.style.backgroundColor = "green"
+  outerBackground.style.backgroundColor = "#0B5D18"
   setTimeout(whiteText, 1000, section);
 }
 
