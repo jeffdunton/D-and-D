@@ -382,7 +382,7 @@ function yellowToWhite(section) {
 
 function whiteText(section) {
   section.style.color = "#ffffff"
-  outerBackground.style.backgroundColor = "#c4a680"
+  outerBackground.style.backgroundColor = "#888888"
 }
 
 // play start sound and wait 3 seconds to enable start game button

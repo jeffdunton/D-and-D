@@ -148,7 +148,7 @@ img {
 /* outer */
 .outer {
   background-image: url('images/outerBG_v2.png');
-  background-color: #c4a680;
+  background-color: #888888;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -407,18 +407,24 @@ body {
   margin: 2px;
   overflow: hidden;
 }
-.select .radio .radio-content label:hover {
+.select .radio .radio-content label:hover,
+.select .radio .radio-content label:hover img,
+.select .radio input[type="radio"]:checked + label img,
+.select .radio input[type="radio"]:focus + label img {
   background-color: rgba(255,255,255, 1.0);
+  opacity: 1.0;
 }
 .select .radio input[type="radio"]:checked + label {
   border: 1px solid transparent;
   outline: 3px solid #000000;
   background-color: rgba(255,255,255, 1.0);
+  opacity: 1.0;
 }
 .select .radio input[type="radio"]:focus + label {
   border: 1px solid transparent;
   outline: 3px solid #000000;
   background-color: rgba(255,255,255, 1.0);
+  opacity: 1.0;
 }
 #error {
   min-height: 45px;
@@ -455,4 +461,9 @@ buttons {
 }
 #result1, #result2 {
   transition: all 1s linear;
+}
+
+label img {
+  opacity: 0.6;
+  transition: none;
 }
