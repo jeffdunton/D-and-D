@@ -5,10 +5,8 @@ const wizard = "Wizard<br>HP: 750<br>Base Damage: 25<br>Regen: 75";
 const dragon = "Dragon<br>HP: 1350<br>Base Damage: 25<br>Regen: 25";
 const ogre = "Ogre<br>HP: 1500<br>Base Damage: 50<br>Regen: 0";
 const princess = "Princess<br>HP: 500<br>Base Damage: 10<br>Regen: 100";
-
 var player1 = null;
 var player2 = null;
-
 var dude1 = {
   "type": "Player",
   "class": null,
@@ -23,7 +21,11 @@ var dude2 = {
   "base_damage": null,
   "regen": null
 }
-
+var attackColor = "red";
+var healColor = "green";
+var critHitColor = "yellow";
+var poisonColor = "purple";
+var freezeColor = "blue";
 var attackSound = document.getElementById("attackSound");
 var healSound = document.getElementById("healSound");
 var selectSound = document.getElementById("selectSound");
@@ -44,7 +46,6 @@ var critHitSound = document.getElementById("critHitSound");
 var freezeSound = document.getElementById("freezeSound");
 var battleThemeSound = document.getElementById("battleThemeSound");
 battleThemeSound.volume = 0.3;
-
 var attackIcon1 = document.getElementById("attackIcon1");
 var attackIcon2 = document.getElementById("attackIcon2");
 var healIcon1 = document.getElementById("healIcon1");
@@ -53,7 +54,6 @@ var critHitIcon1 = document.getElementById("critHitIcon1");
 var critHitIcon2 = document.getElementById("critHitIcon2");
 var poisonIcon1 = document.getElementById("poisonIcon1");
 var poisonIcon2 = document.getElementById("poisonIcon2");
-
 var attack1 = document.getElementById("attack1");
 var attack2 = document.getElementById("attack2");
 var heal1 = document.getElementById("heal1");
@@ -64,9 +64,7 @@ var poison1 = document.getElementById("poison1");
 var poison2 = document.getElementById("poison2");
 var freeze1 = document.getElementById("freeze1");
 var freeze2 = document.getElementById("freeze2");
-
 var calculate = document.getElementById("calculate");
-
 var outerBackground = document.getElementById("outerBackground");
 var element = document.getElementById("error");
 var error = document.getElementById("error");
@@ -84,18 +82,14 @@ var player2Choices = document.getElementById("Player2Choices");
 var heading1 = document.getElementById('heading1');
 var heading2 = document.getElementById('heading2');
 var overlay = document.getElementById('overlay');
-
 // fade the background onto the screen
 function overlayFade() {
   overlay.style.backgroundColor = "transparent";
 }
-
 // disable start button
 calculate.disabled = true;
-
 // store active timers so that they can be stopped when needed
 var timeouts = [];
-
 // disable all attack buttons
 function disableButtons() {
   attack1.disabled = true;
@@ -129,7 +123,6 @@ function disableButtons() {
   freeze1.style.cursor = "not-allowed";
   freeze2.style.cursor = "not-allowed";
 }
-
 function disable1Enable2() {
   attack2.disabled = false;
   attack2.style.opacity = "1.0";
@@ -162,7 +155,6 @@ function disable1Enable2() {
   freeze1.style.opacity = "0.2";
   freeze1.style.cursor = "not-allowed";
 }
-
 function disable2Enable1() {
   attack1.disabled = false;
   attack1.style.opacity = "1.0";
@@ -195,7 +187,6 @@ function disable2Enable1() {
   freeze2.style.opacity = "0.2";
   freeze2.style.cursor = "not-allowed";
 }
-
 // on character icon click, display player selections
 function player1Type(player1) {
   result1.innerHTML = player1;
@@ -231,7 +222,6 @@ function player2Type(player2) {
       princessSound.play();
   }
 }
-
 // set dude1 and dude2 values
 function validatePlayer(player,dudeNumber) {
   if (player === warrior) {
@@ -266,7 +256,6 @@ function validatePlayer(player,dudeNumber) {
     dudeNumber.regen = 100;
   }
 }
-
 // validate players and enable start button
 function enableStart() {
   if ((player1 != null) && (player2 != null)) {
@@ -295,60 +284,30 @@ function enableStart() {
     errorSound.play();
   }
 }
-
 function animation(typeSound,typeIconNumber) {
   typeSound.play();
   typeIconNumber.style.transform = "rotate(360deg)";
   typeIconNumber.style.opacity = "1.0";
   setTimeout(animationFade, 1000, typeIconNumber);
 }
-
 function animationFade(typeIconNumber) {
   typeIconNumber.style.transform = "rotate(-360deg)";
   typeIconNumber.style.opacity = "0.2";
 }
-
-function purpleToWhite(section) {
-  section.style.color = "purple";
-  outerBackground.style.backgroundColor = "#52163B"
-  setTimeout(whiteText, 1000, section);
+function colorChange(section,color) {
+  section.style.color = color;
+  outerBackground.style.backgroundColor = color;
+  setTimeout(colorChangeBack, 1000, section);
 }
-
-function blueToWhite(section) {
-  section.style.color = "blue";
-  outerBackground.style.backgroundColor = "#142A47"
-  setTimeout(whiteText, 1000, section);
-}
-
-function redToWhite(section) {
-  section.style.color = "red";
-  outerBackground.style.backgroundColor = "#48110B"
-  setTimeout(whiteText, 1000, section);
-}
-
-function greenToWhite(section) {
-  section.style.color = "green";
-  outerBackground.style.backgroundColor = "#0B5D18"
-  setTimeout(whiteText, 1000, section);
-}
-
-function yellowToWhite(section) {
-  section.style.color = "yellow";
-  outerBackground.style.backgroundColor = "#686329"
-  setTimeout(whiteText, 1000, section);
-}
-
-function whiteText(section) {
+function colorChangeBack(section) {
   section.style.color = "#ffffff"
   outerBackground.style.backgroundColor = "#888888"
 }
-
 // play start sound and wait 3 seconds to enable start game button
 function countdown() {
   fightSound.play();
   setTimeout(startGame, 3000)
 }
-
 // hide buttons and enable attack screen buttons
 function startGame() {
   battleThemeSound.play();
@@ -370,7 +329,6 @@ function startGame() {
   heading2.style.opacity = "0.2";
   disable2Enable1();
 }
-
 // attack functions
 function attacker1(player, enemy) {
   animation(attackSound,attackIcon1);
@@ -379,7 +337,7 @@ function attacker1(player, enemy) {
   element.innerHTML = ("<p>" + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  redToWhite(result2);
+  colorChange(result2,attackColor);
   disable1Enable2();
   if (enemy.health <= 0) {
     disableButtons();
@@ -400,7 +358,7 @@ function attacker2(player, enemy) {
   element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class +  " has " + player.health + " health. </p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  redToWhite(result1);
+  colorChange(result1,attackColor);
   disable2Enable1();
   if (player.health <= 0) {
     disableButtons();
@@ -412,7 +370,6 @@ function attacker2(player, enemy) {
     }
   }
 }
-
 // heal functions
 function healer1(player) {
   animation(healSound,healIcon1);
@@ -420,7 +377,7 @@ function healer1(player) {
   player.health = player.health + player_heal;
   element.innerHTML = ("<p>" + player.class + " regained " + player_heal + " health and now has " + player.health + " health. </p>");
   result1.innerHTML =  player.class + "<br />" + player.health;
-  greenToWhite(result1);
+  colorChange(result1,healColor);
   setTimeout(player2Move, 3000);
   disable1Enable2();
 }
@@ -430,7 +387,7 @@ function healer2(enemy) {
   enemy.health = enemy.health + enemy_heal;
   element.innerHTML = ("<p>" + enemy.class + " regained " + enemy_heal + " health and now has " + enemy.health + " health. </p>");
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  greenToWhite(result2);
+  colorChange(result2,healColor);
   disable2Enable1();
 }
 // crit hit functions
@@ -442,8 +399,8 @@ function critHitter1(player, enemy) {
   element.innerHTML = ("<p> Critical Hit! " + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. " + player.class + " lost 50 health and now has " + player.health + "</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  redToWhite(result1);
-  yellowToWhite(result2);
+  colorChange(result1,attackColor);
+  colorChange(result2,critHitColor);
   disable1Enable2();
   if (enemy.health <= 0) {
     disableButtons();
@@ -474,8 +431,8 @@ function critHitter2(player, enemy) {
   element.innerHTML = ("<p> Critical Hit! " + enemy.class + " did " + enemy_attack + " damage and " + player.class +  " has " + player.health + " health. " +  enemy.class + " lost 50 health and now has " + enemy.health + "</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  yellowToWhite(result1);
-  redToWhite(result2);
+  colorChange(result2,attackColor);
+  colorChange(result1,critHitColor);
   disable2Enable1();
   if (player.health <= 0) {
     disableButtons();
@@ -495,7 +452,6 @@ function critHitter2(player, enemy) {
     }
   }
 }
-
 function poisoner1(player,enemy) {
   animation(poisonSound,poisonIcon1);
   enemy.health = enemy.health - 25;
@@ -503,8 +459,8 @@ function poisoner1(player,enemy) {
   element.innerHTML = ("<p>" + player.class + " poisoned " + enemy.class + ". " + enemy.class + " now has " + enemy.health + " health. " + player.class + " lost 75 health and now has " + player.health + " health.</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  purpleToWhite(result1);
-  purpleToWhite(result2);
+  colorChange(result1,poisonColor);
+  colorChange(result2,poisonColor);
   timeouts.push(setTimeout(playerPoison, 3000, enemy));
   timeouts.push(setTimeout(playerPoison, 6000, enemy));
   timeouts.push(setTimeout(playerPoison, 9000, enemy));
@@ -531,7 +487,6 @@ function poisoner1(player,enemy) {
     setTimeout(player2Move, 3000);
   }
 }
-
 function poisoner2(player,enemy) {
   animation(poisonSound,poisonIcon2);
   enemy.health = enemy.health - 75;
@@ -539,8 +494,8 @@ function poisoner2(player,enemy) {
   element.innerHTML = ("<p>" + enemy.class + " poisoned " + player.class + ". " + player.class + " now has " + player.health + " health. " + enemy.class + " lost 75 health and now has " + enemy.health + " health.</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
-  purpleToWhite(result1);
-  purpleToWhite(result2);
+  colorChange(result1,poisonColor);
+  colorChange(result2,poisonColor);
   timeouts.push(setTimeout(enemyPoison, 3000, player));
   timeouts.push(setTimeout(enemyPoison, 6000, player));
   timeouts.push(setTimeout(enemyPoison, 9000, player));
@@ -565,7 +520,6 @@ function poisoner2(player,enemy) {
     }
   }
 }
-
 function freezer1A(player,enemy) {
   var freeze;
   animation(freezeSound,freezeIcon1);
@@ -578,7 +532,7 @@ function freezer1A(player,enemy) {
     element.innerHTML = ("<p>Freeze successful! " + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
     result1.innerHTML = player.class + "<br />" + player.health;
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
-    blueToWhite(result2);
+     colorChange(result2,freezeColor);
     if (enemy.health <= 0) {
       disableButtons();
       battleThemeSound.pause();
@@ -592,7 +546,7 @@ function freezer1A(player,enemy) {
     }
   } else {
     player.health = player.health - 100;
-    blueToWhite(result1);
+    colorChange(result1,freezeColor);
     result1.innerHTML = player.class + "<br />" + player.health;
     element.innerHTML = ("<p>Freeze failed! " + player.class + " lost 100 health and now has " + player.health + " health.</p>");
     if (player.health <= 0) {
@@ -609,13 +563,12 @@ function freezer1A(player,enemy) {
     }
   }
 }
-
 function freezer1B(player,enemy) {
   var freeze;
   animation(freezeSound,freezeIcon1);
   var roll = randomNumber(4);
   animation(attackSound,attackIcon1);
-  redToWhite(result2);
+  colorChange(result2,attackColor);
   disableButtons();
   var player_attack = attack_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
@@ -634,7 +587,6 @@ function freezer1B(player,enemy) {
     setTimeout(attacker1, 3000, dude1, dude2);
   }
 }
-
 function freezer2A(player,enemy) {
   var freeze;
   animation(freezeSound,freezeIcon2);
@@ -647,7 +599,7 @@ function freezer2A(player,enemy) {
     element.innerHTML = ("<p>Freeze successful! " + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
     result1.innerHTML = player.class + "<br />" + player.health;
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
-    blueToWhite(result1);
+    colorChange(result1,freezeColor);
     if (player.health <= 0) {
       disableButtons();
       battleThemeSound.pause();
@@ -661,7 +613,7 @@ function freezer2A(player,enemy) {
     }
   } else {
     enemy.health = enemy.health - 100;
-    blueToWhite(result2);
+    colorChange(result2,freezeColor);
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     element.innerHTML = ("<p>Freeze failed! " + enemy.class + " lost 100 health and now has " + enemy.health + " health.</p>");
     if (enemy.health <= 0) {
@@ -677,14 +629,13 @@ function freezer2A(player,enemy) {
     }
   }
 }
-
 function freezer2B(player,enemy) {
   var freeze;
   animation(freezeSound,freezeIcon2);
   disableButtons();
   var roll = randomNumber(4);
   animation(attackSound,attackIcon2);
-  redToWhite(result2);
+  colorChange(result2,attackColor);
   var enemy_attack = attack_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
   element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
@@ -702,7 +653,6 @@ function freezer2B(player,enemy) {
     setTimeout(autoAttack, 3000);
   }
 }
-
 // auto attacks
 function autoAttack() {
   attacker2(dude1, dude2);
@@ -719,7 +669,6 @@ function autoPoison() {
 function autoFreeze() {
   freezer2A(dude1,dude2);
 }
-
 var autoTurn = [autoAttack, autoHeal, autoCritHit, autoPoison, autoFreeze];
 function randomNumber(x) {
   return Math.floor( Math.random() * x );
@@ -727,7 +676,6 @@ function randomNumber(x) {
 function player2Move() {
   autoTurn[ randomNumber(autoTurn.length) ]();
 }
-
 // random attack and heal generation
 function attack_roll(base_damage) {
   return Math.floor(Math.random() * 100) + base_damage;
@@ -738,10 +686,9 @@ function heal_roll(regen) {
 function critHit_roll(base_damage) {
   return Math.floor(Math.random() * 250) + base_damage;
 }
-
 function playerPoison(enemy) {
   var poisonAmount = Math.floor(Math.random() * 25);
-  purpleToWhite(result2);
+  colorChange(result2,poisonColor);
   enemy.health = enemy.health - poisonAmount;
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
@@ -757,7 +704,7 @@ function playerPoison(enemy) {
 }
 function enemyPoison(enemy) {
   var poisonAmount = Math.floor(Math.random() * 25);
-  purpleToWhite(result1);
+  colorChange(result1,poisonColor);
   enemy.health = enemy.health - poisonAmount;
   element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
@@ -771,7 +718,6 @@ function enemyPoison(enemy) {
     }
   }
 }
-
 // clear all data
 function resetGame() {
   swipeSound.play();
