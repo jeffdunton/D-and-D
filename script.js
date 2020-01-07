@@ -296,64 +296,16 @@ function enableStart() {
   }
 }
 
-function attackAnimation(attackIconNumber) {
-  attackSound.play();
-  attackIconNumber.style.transform = "rotate(360deg)";
-  attackIconNumber.style.opacity = "1.0";
-  setTimeout(attackAnimationFade, 1000, attackIconNumber);
+function animation(typeSound,typeIconNumber) {
+  typeSound.play();
+  typeIconNumber.style.transform = "rotate(360deg)";
+  typeIconNumber.style.opacity = "1.0";
+  setTimeout(animationFade, 1000, typeIconNumber);
 }
 
-function attackAnimationFade(attackIconNumber) {
-  attackIconNumber.style.transform = "rotate(-360deg)";
-  attackIconNumber.style.opacity = "0.2";
-}
-
-function healAnimation(healIconNumber) {
-  healSound.play();
-  healIconNumber.style.transform = "rotate(360deg)";
-  healIconNumber.style.opacity = "1.0";
-  setTimeout(healAnimationFade, 1000, healIconNumber);
-}
-
-function healAnimationFade(healIconNumber) {
-  healIconNumber.style.transform = "rotate(-360deg)";
-  healIconNumber.style.opacity = "0.2";
-}
-
-function critHitAnimation(critHitIconNumber) {
-  critHitSound.play();
-  critHitIconNumber.style.transform = "rotate(360deg)";
-  critHitIconNumber.style.opacity = "1.0";
-  setTimeout(critHitAnimationFade, 1000, critHitIconNumber);
-}
-
-function critHitAnimationFade(critHitIconNumber) {
-  critHitIconNumber.style.transform = "rotate(-360deg)";
-  critHitIconNumber.style.opacity = "0.2";
-}
-
-function poisonAnimation(poisonIconNumber) {
-  poisonSound.play();
-  poisonIconNumber.style.transform = "rotate(360deg)";
-  poisonIconNumber.style.opacity = "1.0";
-  setTimeout(poisonAnimationFade, 1000, poisonIconNumber);
-}
-
-function poisonAnimationFade(poisonIconNumber) {
-  poisonIconNumber.style.transform = "rotate(-360deg)";
-  poisonIconNumber.style.opacity = "0.2";
-}
-
-function freezeAnimation(freezeIconNumber) {
-  freezeSound.play();
-  freezeIconNumber.style.transform = "rotate(360deg)";
-  freezeIconNumber.style.opacity = "1.0";
-  setTimeout(freezeAnimationFade, 1000, freezeIconNumber);
-}
-
-function freezeAnimationFade(freezeIconNumber) {
-  freezeIconNumber.style.transform = "rotate(-360deg)";
-  freezeIconNumber.style.opacity = "0.2";
+function animationFade(typeIconNumber) {
+  typeIconNumber.style.transform = "rotate(-360deg)";
+  typeIconNumber.style.opacity = "0.2";
 }
 
 function purpleToWhite(section) {
@@ -421,7 +373,7 @@ function startGame() {
 
 // attack functions
 function attacker1(player, enemy) {
-  attackAnimation(attackIcon1);
+  animation(attackSound,attackIcon1);
   var player_attack = attack_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
   element.innerHTML = ("<p>" + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
@@ -442,7 +394,7 @@ function attacker1(player, enemy) {
   }
 }
 function attacker2(player, enemy) {
-  attackAnimation(attackIcon2);
+  animation(attackSound,attackIcon2);
   var enemy_attack = attack_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
   element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class +  " has " + player.health + " health. </p>");
@@ -463,7 +415,7 @@ function attacker2(player, enemy) {
 
 // heal functions
 function healer1(player) {
-  healAnimation(healIcon1);
+  animation(healSound,healIcon1);
   var player_heal = heal_roll(player.regen);
   player.health = player.health + player_heal;
   element.innerHTML = ("<p>" + player.class + " regained " + player_heal + " health and now has " + player.health + " health. </p>");
@@ -473,7 +425,7 @@ function healer1(player) {
   disable1Enable2();
 }
 function healer2(enemy) {
-  healAnimation(healIcon2);
+  animation(healSound,healIcon2);
   var enemy_heal = heal_roll(enemy.regen);
   enemy.health = enemy.health + enemy_heal;
   element.innerHTML = ("<p>" + enemy.class + " regained " + enemy_heal + " health and now has " + enemy.health + " health. </p>");
@@ -483,7 +435,7 @@ function healer2(enemy) {
 }
 // crit hit functions
 function critHitter1(player, enemy) {
-  critHitAnimation(critHitIcon1);
+  animation(critHitSound,critHitIcon1);
   var player_attack = critHit_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
   player.health = player.health - 50;
@@ -515,7 +467,7 @@ function critHitter1(player, enemy) {
   }
 }
 function critHitter2(player, enemy) {
-  critHitAnimation(critHitIcon2);
+  animation(critHitSound,critHitIcon2);
   var enemy_attack = critHit_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
   enemy.health = enemy.health - 50;
@@ -545,7 +497,7 @@ function critHitter2(player, enemy) {
 }
 
 function poisoner1(player,enemy) {
-  poisonAnimation(poisonIcon1);
+  animation(poisonSound,poisonIcon1);
   enemy.health = enemy.health - 25;
   player.health = player.health - 75;
   element.innerHTML = ("<p>" + player.class + " poisoned " + enemy.class + ". " + enemy.class + " now has " + enemy.health + " health. " + player.class + " lost 75 health and now has " + player.health + " health.</p>");
@@ -581,7 +533,7 @@ function poisoner1(player,enemy) {
 }
 
 function poisoner2(player,enemy) {
-  poisonAnimation(poisonIcon2);
+  animation(poisonSound,poisonIcon2);
   enemy.health = enemy.health - 75;
   player.health = player.health - 25;
   element.innerHTML = ("<p>" + enemy.class + " poisoned " + player.class + ". " + player.class + " now has " + player.health + " health. " + enemy.class + " lost 75 health and now has " + enemy.health + " health.</p>");
@@ -616,10 +568,10 @@ function poisoner2(player,enemy) {
 
 function freezer1A(player,enemy) {
   var freeze;
-  freezeAnimation(freezeIcon1);
+  animation(freezeSound,freezeIcon1);
   var roll = randomNumber(4);
   if (roll === 3) {
-    attackAnimation(attackIcon1);
+    animation(attackSound,attackIcon1);
     disableButtons();
     var player_attack = attack_roll(player.base_damage);
     enemy.health = enemy.health - player_attack;
@@ -660,9 +612,9 @@ function freezer1A(player,enemy) {
 
 function freezer1B(player,enemy) {
   var freeze;
-  freezeAnimation(freezeIcon1);
+  animation(freezeSound,freezeIcon1);
   var roll = randomNumber(4);
-  attackAnimation(attackIcon1);
+  animation(attackSound,attackIcon1);
   redToWhite(result2);
   disableButtons();
   var player_attack = attack_roll(player.base_damage);
@@ -685,10 +637,10 @@ function freezer1B(player,enemy) {
 
 function freezer2A(player,enemy) {
   var freeze;
-  freezeAnimation(freezeIcon2);
+  animation(freezeSound,freezeIcon2);
   var roll = randomNumber(4);
   if (roll === 3) {
-    attackAnimation(attackIcon2);
+    animation(attackSound,attackIcon2);
     disableButtons();
     var enemy_attack = attack_roll(enemy.base_damage);
     player.health = player.health - enemy_attack;
@@ -728,10 +680,10 @@ function freezer2A(player,enemy) {
 
 function freezer2B(player,enemy) {
   var freeze;
-  freezeAnimation(freezeIcon2);
+  animation(freezeSound,freezeIcon2);
   disableButtons();
   var roll = randomNumber(4);
-  attackAnimation(attackIcon2);
+  animation(attackSound,attackIcon2);
   redToWhite(result2);
   var enemy_attack = attack_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
