@@ -334,7 +334,7 @@ function attacker1(player, enemy) {
   animation(attackSound,attackIcon1);
   var player_attack = attack_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
-  element.innerHTML = ("<p>" + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
+  element.innerHTML = ("<p>" + enemy.class + " lost " + player_attack + " health.</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   colorChange(result2,attackColor);
@@ -355,7 +355,7 @@ function attacker2(player, enemy) {
   animation(attackSound,attackIcon2);
   var enemy_attack = attack_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
-  element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class +  " has " + player.health + " health. </p>");
+  element.innerHTML = ("<p>" + player.class +  " lost " + enemy_attack + " health.</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   colorChange(result1,attackColor);
@@ -375,7 +375,7 @@ function healer1(player) {
   animation(healSound,healIcon1);
   var player_heal = heal_roll(player.regen);
   player.health = player.health + player_heal;
-  element.innerHTML = ("<p>" + player.class + " regained " + player_heal + " health and now has " + player.health + " health. </p>");
+  element.innerHTML = ("<p>" + player.class + " regained " + player_heal + " health.</p>");
   result1.innerHTML =  player.class + "<br />" + player.health;
   colorChange(result1,healColor);
   setTimeout(player2Move, 3000);
@@ -385,7 +385,7 @@ function healer2(enemy) {
   animation(healSound,healIcon2);
   var enemy_heal = heal_roll(enemy.regen);
   enemy.health = enemy.health + enemy_heal;
-  element.innerHTML = ("<p>" + enemy.class + " regained " + enemy_heal + " health and now has " + enemy.health + " health. </p>");
+  element.innerHTML = ("<p>" + enemy.class + " regained " + enemy_heal + " health. </p>");
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   colorChange(result2,healColor);
   disable2Enable1();
@@ -396,7 +396,7 @@ function critHitter1(player, enemy) {
   var player_attack = critHit_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
   player.health = player.health - 50;
-  element.innerHTML = ("<p> Critical Hit! " + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. " + player.class + " lost 50 health and now has " + player.health + "</p>");
+  element.innerHTML = ("<p> Critical Hit! " + enemy.class + " lost " + player_attack + " health. " + player.class + " lost 50 health.</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   colorChange(result1,attackColor);
@@ -428,7 +428,7 @@ function critHitter2(player, enemy) {
   var enemy_attack = critHit_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
   enemy.health = enemy.health - 50;
-  element.innerHTML = ("<p> Critical Hit! " + enemy.class + " did " + enemy_attack + " damage and " + player.class +  " has " + player.health + " health. " +  enemy.class + " lost 50 health and now has " + enemy.health + "</p>");
+  element.innerHTML = ("<p> Critical Hit! " + player.class +  " lost " + enemy_attack + " health. " +  enemy.class + " lost 50 health.</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   colorChange(result2,attackColor);
@@ -456,7 +456,7 @@ function poisoner1(player,enemy) {
   animation(poisonSound,poisonIcon1);
   enemy.health = enemy.health - 25;
   player.health = player.health - 75;
-  element.innerHTML = ("<p>" + player.class + " poisoned " + enemy.class + ". " + enemy.class + " now has " + enemy.health + " health. " + player.class + " lost 75 health and now has " + player.health + " health.</p>");
+  element.innerHTML = ("<p>" + player.class + " poisoned " + enemy.class + ". " + enemy.class + " lost 25 health. " + player.class + " suffered a loss of 75 health.</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   colorChange(result1,poisonColor);
@@ -491,7 +491,7 @@ function poisoner2(player,enemy) {
   animation(poisonSound,poisonIcon2);
   enemy.health = enemy.health - 75;
   player.health = player.health - 25;
-  element.innerHTML = ("<p>" + enemy.class + " poisoned " + player.class + ". " + player.class + " now has " + player.health + " health. " + enemy.class + " lost 75 health and now has " + enemy.health + " health.</p>");
+  element.innerHTML = ("<p>" + enemy.class + " poisoned " + player.class + ". " + player.class + " lost 25 health. " + enemy.class + " suffered a loss of 75 health.</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   colorChange(result1,poisonColor);
@@ -529,7 +529,7 @@ function freezer1A(player,enemy) {
     disableButtons();
     var player_attack = attack_roll(player.base_damage);
     enemy.health = enemy.health - player_attack;
-    element.innerHTML = ("<p>Freeze successful! " + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
+    element.innerHTML = ("<p>Freeze successful! " + enemy.class + " lost " + player_attack + " health.</p>");
     result1.innerHTML = player.class + "<br />" + player.health;
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
      colorChange(result2,freezeColor);
@@ -548,7 +548,7 @@ function freezer1A(player,enemy) {
     player.health = player.health - 100;
     colorChange(result1,freezeColor);
     result1.innerHTML = player.class + "<br />" + player.health;
-    element.innerHTML = ("<p>Freeze failed! " + player.class + " lost 100 health and now has " + player.health + " health.</p>");
+    element.innerHTML = ("<p>Freeze failed! " + player.class + " lost 100 health.</p>");
     if (player.health <= 0) {
       disableButtons();
       battleThemeSound.pause();
@@ -572,7 +572,7 @@ function freezer1B(player,enemy) {
   disableButtons();
   var player_attack = attack_roll(player.base_damage);
   enemy.health = enemy.health - player_attack;
-  element.innerHTML = ("<p>" + player.class + " did " + player_attack + " damage and " + enemy.class + " has " + enemy.health + " health. </p>");
+  element.innerHTML = ("<p>" + enemy.class + " lost " + player_attack + " health.</p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
@@ -596,7 +596,7 @@ function freezer2A(player,enemy) {
     disableButtons();
     var enemy_attack = attack_roll(enemy.base_damage);
     player.health = player.health - enemy_attack;
-    element.innerHTML = ("<p>Freeze successful! " + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
+    element.innerHTML = ("<p>Freeze successful! " + player.class + " lost " + enemy_attack + " health.</p>");
     result1.innerHTML = player.class + "<br />" + player.health;
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
     colorChange(result1,freezeColor);
@@ -615,7 +615,7 @@ function freezer2A(player,enemy) {
     enemy.health = enemy.health - 100;
     colorChange(result2,freezeColor);
     result2.innerHTML = enemy.class + "<br />" + enemy.health;
-    element.innerHTML = ("<p>Freeze failed! " + enemy.class + " lost 100 health and now has " + enemy.health + " health.</p>");
+    element.innerHTML = ("<p>Freeze failed! " + enemy.class + " lost 100 health.</p>");
     if (enemy.health <= 0) {
       disableButtons();
       battleThemeSound.pause();
@@ -638,7 +638,7 @@ function freezer2B(player,enemy) {
   colorChange(result2,attackColor);
   var enemy_attack = attack_roll(enemy.base_damage);
   player.health = player.health - enemy_attack;
-  element.innerHTML = ("<p>" + enemy.class + " did " + enemy_attack + " damage and " + player.class + " has " + player.health + " health. </p>");
+  element.innerHTML = ("<p>" + player.class + " lost " + enemy_attack + " health. </p>");
   result1.innerHTML = player.class + "<br />" + player.health;
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   if (player.health <= 0) {
@@ -690,7 +690,7 @@ function playerPoison(enemy) {
   var poisonAmount = Math.floor(Math.random() * 25);
   colorChange(result2,poisonColor);
   enemy.health = enemy.health - poisonAmount;
-  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
+  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison.</p>");
   result2.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
     disableButtons();
@@ -706,7 +706,7 @@ function enemyPoison(enemy) {
   var poisonAmount = Math.floor(Math.random() * 25);
   colorChange(result1,poisonColor);
   enemy.health = enemy.health - poisonAmount;
-  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison and now has " + enemy.health + ".</p>");
+  element.innerHTML = ("<p>" + enemy.class + " lost " + poisonAmount + " health due to poison.</p>");
   result1.innerHTML = enemy.class + "<br />" + enemy.health;
   if (enemy.health <= 0) {
     disableButtons();
